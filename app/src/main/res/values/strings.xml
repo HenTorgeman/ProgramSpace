@@ -1,7 +1,12 @@
 <resources>
-    <string name="app_name">ProgramSpace</string>
-    <string name="activity_user_profile">user profile Page</string>
-    <string name="activity_login">ProgramSpace LogIn Page</string>
 
+<!-- Titles-->
+    <string name="app_name">ProgramSpace</string>
+    <string name="activity_user_profile">Profile Page</string>
+    <string name="activity_login">ProgramSpace LogIn Page</string>
+    <string name="activity_register">Register Page</string>
+
+<!--Buttons    -->
     <string name="btn_login">LogIn</string>
+    <string name="btn_register">Register</string>
 </resources>

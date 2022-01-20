@@ -14,8 +14,19 @@ public class LogInActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button login_btn=findViewById(R.id.btn_login);
+        Button register_btn=findViewById(R.id.btn_register);
+        register_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
+                //The Actual Btn.click event Listener
+                open_register();
+            }
+        });
+
+
+
+        Button login_btn=findViewById(R.id.btn_login);
         login_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -30,6 +41,10 @@ public class LogInActivity extends AppCompatActivity {
 
     private void open_profile(){
         Intent intent=new Intent(this,UserProfileActivity.class);
+        startActivity(intent);
+    }
+    private void open_register(){
+        Intent intent=new Intent(this,RegisterActivity.class);
         startActivity(intent);
     }
 }
