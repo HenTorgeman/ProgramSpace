@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import com.example.programspace.model.ContentMainActivity;
+
 public class LogInActivity extends AppCompatActivity {
 
     @Override
@@ -40,7 +42,7 @@ public class LogInActivity extends AppCompatActivity {
     }
 
     private void open_profile(){
-        Intent intent=new Intent(this,UserProfileActivity.class);
+        Intent intent=new Intent(this, ContentMainActivity.class);
         startActivity(intent);
     }
     private void open_register(){

@@ -2,7 +2,7 @@ package com.example.programspace.model;
 
 public class User {
 
-    public String name,email,password;
+    public String id,name,email,password;
 
     public User() {
 

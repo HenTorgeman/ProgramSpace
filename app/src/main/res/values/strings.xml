@@ -1,12 +1,18 @@
 <resources>
 
-<!-- Titles-->
+    <!-- Titles-->
     <string name="app_name">ProgramSpace</string>
     <string name="activity_user_profile">Profile Page</string>
     <string name="activity_login">ProgramSpace LogIn Page</string>
     <string name="activity_register">Register Page</string>
 
-<!--Buttons    -->
+    <!--Buttons    -->
     <string name="btn_login">LogIn</string>
     <string name="btn_register">Register</string>
+    <string name="title_activity_content_main">ContentMainActivity</string>
+    <string name="title_home">Home</string>
+    <string name="title_dashboard">Dashboard</string>
+    <string name="title_notifications">Notifications</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
