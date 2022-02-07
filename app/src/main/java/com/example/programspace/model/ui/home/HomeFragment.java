@@ -25,14 +25,16 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     List<Project> data;
+    FragmentHomeBinding binding;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_home,container,false);
+        binding = FragmentHomeBinding.inflate(inflater, container, false);
+        View root = binding.getRoot();
         data = Model.instance.getAllProjects(); //using instance
 
-        RecyclerView list = view.findViewById(R.id.projectlist_rv);
+        RecyclerView list = root.findViewById(R.id.projectlist_rv);
         list.setHasFixedSize(true);
 
         list.setLayoutManager(new LinearLayoutManager(getContext()));
@@ -59,7 +61,7 @@ public class HomeFragment extends Fragment {
 
             }
         });*/
-        return view;
+        return root;
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{

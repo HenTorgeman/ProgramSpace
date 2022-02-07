@@ -13,7 +13,7 @@ public class Model {
 
     private Model(){
         Programmer pro = new Programmer("Testuser", "Testuse@email", "123456", "about");
-        for(int i=0;i<1;i++){
+        for(int i=0;i<3;i++){
             Project p = new Project(pro,null,"Testproject"+i,"about",10,false,new Date(),new Date(),null,null,null);
             data.add(p);
         }
