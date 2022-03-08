@@ -1,4 +1,4 @@
-package com.example.programspace.model.ui.notifications;
+package com.example.programspace.ui.notifications;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

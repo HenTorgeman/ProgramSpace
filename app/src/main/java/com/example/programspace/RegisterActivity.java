@@ -2,6 +2,9 @@ package com.example.programspace;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.Navigation;
+
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
@@ -11,12 +14,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.example.programspace.model.Model;
 import com.example.programspace.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
-import com.google.firebase.database.FirebaseDatabase;
+
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -25,6 +29,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
     private ProgressBar pb;
 
     private FirebaseAuth mAuth;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,7 +44,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         inp_name=(EditText) findViewById(R.id.inp_name_register);
         inp_email=(EditText) findViewById(R.id.inp_email_register);
         inp_password=(EditText) findViewById(R.id.inp_password_register);
-//        inp_des=(EditText) findViewById(R.id.inp_description_register);
+        inp_des=(EditText) findViewById(R.id.inp_description_register);
 
         pb=(ProgressBar) findViewById(R.id.progressBar_register);
     }
@@ -49,6 +54,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         switch (view.getId()){
             case R.id.btn_register_new:
                 RegisterUser();
+                Intent intent=new Intent(this, ContentMainActivity.class);
+                startActivity(intent);
                 break;
         }
     }
@@ -57,7 +64,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         String name=inp_name.getText().toString().trim();
         String password=inp_password.getText().toString().trim();
         String email=inp_email.getText().toString().trim();
-//        String des=inp_des.getText().toString().trim();
+        String des=inp_des.getText().toString().trim();
 
         if(name.isEmpty()){
             inp_name.setError("you must enter user name!");
@@ -88,15 +95,19 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             inp_email.requestFocus();
             return;
         }
-
+//change authentication
         pb.setVisibility(View.VISIBLE);
         mAuth.createUserWithEmailAndPassword(email,password)
                 .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         if(task.isSuccessful()){
-                            User user=new User(name,email,password);
-                            FirebaseDatabase.getInstance().getReference("Users")
+                            User user=new User(name,email,password,des);
+                            Model.instance.addUser(user,()->{
+                                pb.setVisibility(View.GONE);
+                            });
+
+                            /*FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
                                     .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
                                 @Override
@@ -110,9 +121,10 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                                         pb.setVisibility(View.GONE);
                                     }
                                 }
-                            });
+                            });*/
                         }
                     }
                 });
+
     }
 }

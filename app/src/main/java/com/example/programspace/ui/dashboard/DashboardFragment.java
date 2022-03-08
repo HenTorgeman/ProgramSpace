@@ -1,4 +1,4 @@
-package com.example.programspace.model.ui.dashboard;
+package com.example.programspace.ui.dashboard;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

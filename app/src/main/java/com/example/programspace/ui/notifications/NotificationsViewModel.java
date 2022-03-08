@@ -1,4 +1,4 @@
-package com.example.programspace.model.ui.notifications;
+package com.example.programspace.ui.notifications;
 
 import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;

@@ -7,8 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
-import com.example.programspace.model.ContentMainActivity;
-
 public class LogInActivity extends AppCompatActivity {
 
     @Override
@@ -34,14 +32,14 @@ public class LogInActivity extends AppCompatActivity {
             public void onClick(View view) {
 
                 //The Actual Btn.click event Listener
-                open_profile();
+                open_app();
             }
         });
 
 
     }
 
-    private void open_profile(){
+    private void open_app(){
         Intent intent=new Intent(this, ContentMainActivity.class);
         startActivity(intent);
     }

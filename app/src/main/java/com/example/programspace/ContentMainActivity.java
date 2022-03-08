@@ -1,4 +1,4 @@
-package com.example.programspace.model;
+package com.example.programspace;
 
 import android.os.Bundle;
 

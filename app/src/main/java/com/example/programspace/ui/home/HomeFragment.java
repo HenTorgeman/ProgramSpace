@@ -1,4 +1,4 @@
-package com.example.programspace.model.ui.home;
+package com.example.programspace.ui.home;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -9,8 +9,6 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -26,20 +24,21 @@ public class HomeFragment extends Fragment {
 
     List<Project> data;
     FragmentHomeBinding binding;
+    MyAdapter adapter;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        data = Model.instance.getAllProjects(); //using instance
+        
 
         RecyclerView list = root.findViewById(R.id.projectlist_rv);
         list.setHasFixedSize(true);
 
         list.setLayoutManager(new LinearLayoutManager(getContext()));
 
-        com.example.programspace.model.ui.home.HomeFragment.MyAdapter adapter = new com.example.programspace.model.ui.home.HomeFragment.MyAdapter();
+        adapter= new MyAdapter();
         list.setAdapter(adapter);
 
         //add project button
@@ -61,7 +60,15 @@ public class HomeFragment extends Fragment {
 
             }
         });*/
+        Refresh();
         return root;
+    }
+
+    private void Refresh() {
+        Model.instance.getAllProjects((list)->{
+            data = list;
+            adapter.notifyDataSetChanged();
+        });
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
@@ -70,7 +77,7 @@ public class HomeFragment extends Fragment {
         TextView descriptionTV;
 
 
-        public MyViewHolder(@NonNull View itemView, com.example.programspace.model.ui.home.HomeFragment.OnItemClickListener listener) {
+        public MyViewHolder(@NonNull View itemView, com.example.programspace.ui.home.HomeFragment.OnItemClickListener listener) {
             super(itemView);
             nameTv = itemView.findViewById(R.id.list_row_name);
             pronameTV = itemView.findViewById(R.id.list_row_project_name);
@@ -88,23 +95,23 @@ public class HomeFragment extends Fragment {
     interface OnItemClickListener{
         void onItemClick(int position);
     }
-    class MyAdapter extends RecyclerView.Adapter<com.example.programspace.model.ui.home.HomeFragment.MyViewHolder>{
+    class MyAdapter extends RecyclerView.Adapter<com.example.programspace.ui.home.HomeFragment.MyViewHolder>{
 
-        com.example.programspace.model.ui.home.HomeFragment.OnItemClickListener listener;
-        public void setOnItemClickListener(com.example.programspace.model.ui.home.HomeFragment.OnItemClickListener listener){
+        com.example.programspace.ui.home.HomeFragment.OnItemClickListener listener;
+        public void setOnItemClickListener(com.example.programspace.ui.home.HomeFragment.OnItemClickListener listener){
             this.listener = listener;
         }
 
         @NonNull
         @Override
-        public com.example.programspace.model.ui.home.HomeFragment.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        public com.example.programspace.ui.home.HomeFragment.MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
             View view = getLayoutInflater().inflate(R.layout.project_list_row,parent,false);
-            com.example.programspace.model.ui.home.HomeFragment.MyViewHolder holder = new com.example.programspace.model.ui.home.HomeFragment.MyViewHolder(view,listener);
+            com.example.programspace.ui.home.HomeFragment.MyViewHolder holder = new com.example.programspace.ui.home.HomeFragment.MyViewHolder(view,listener);
             return holder;
         }
 
         @Override
-        public void onBindViewHolder(@NonNull com.example.programspace.model.ui.home.HomeFragment.MyViewHolder holder, int position) {
+        public void onBindViewHolder(@NonNull com.example.programspace.ui.home.HomeFragment.MyViewHolder holder, int position) {
             Project project = data.get(position);
             holder.nameTv.setText(project.getProject_name());
             holder.descriptionTV.setText(project.getProject_des());
@@ -112,6 +119,8 @@ public class HomeFragment extends Fragment {
 
         @Override
         public int getItemCount() {
+            if(data==null)
+                return 0;
             return data.size();
         }
     }
