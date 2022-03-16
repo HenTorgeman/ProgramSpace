@@ -3,23 +3,21 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Users/User/AndroidStudioProjects/ProgramSpace/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.122" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ProgramSpace/app/src/main/res/drawable/profile_background.xml" value="0.178" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/activity_content_main.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/activity_main.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/activity_register.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/activity_user_profile.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_dashboard.xml" value="0.1796875" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_home.xml" value="0.1403985507246377" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_notifications.xml" value="0.1403985507246377" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_profile.xml" value="0.16666666666666666" />
+        <entry key="..\:/Users/User/AndroidStudioProjects/ProgramSpace/app/src/main/res/menu/bottom_nav_menu.xml" value="0.1796875" />
         <entry key="..\:/Users/hen-t/Android_Projects/ProgramSpace/app/src/main/res/layout/activity_logIn.xml" value="0.1" />
         <entry key="..\:/Users/hen-t/Android_Projects/ProgramSpace/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/hen-t/Android_Projects/ProgramSpace/app/src/main/res/layout/activity_register.xml" value="0.2864583333333333" />
         <entry key="..\:/Users/hen-t/Android_Projects/ProgramSpace/app/src/main/res/layout/activity_user_profile.xml" value="0.176" />
-        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2703125" />
-        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2703125" />
-        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2703125" />
-        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/activity_content_main.xml" value="0.264" />
-        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/activity_register.xml" value="0.264" />
-        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/activity_user_profile.xml" value="0.13020833333333334" />
-        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_dashboard.xml" value="0.1640625" />
-        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_home.xml" value="0.1640625" />
-        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_notifications.xml" value="0.1640625" />
-        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/project_list_row.xml" value="0.4" />
-        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
-        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2703125" />
       </map>
     </option>
   </component>

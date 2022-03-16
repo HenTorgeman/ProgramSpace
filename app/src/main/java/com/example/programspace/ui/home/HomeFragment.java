@@ -31,7 +31,9 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        
+
+
+
 
         RecyclerView list = root.findViewById(R.id.projectlist_rv);
         list.setHasFixedSize(true);
