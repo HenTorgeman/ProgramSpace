@@ -20,6 +20,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
 
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -45,6 +46,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         inp_email=(EditText) findViewById(R.id.inp_email_register);
         inp_password=(EditText) findViewById(R.id.inp_password_register);
         inp_des=(EditText) findViewById(R.id.inp_description_register);
+
 
         pb=(ProgressBar) findViewById(R.id.progressBar_register);
     }
@@ -106,6 +108,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
                             Model.instance.addUser(user,()->{
                                 pb.setVisibility(View.GONE);
                             });
+
 
                             /*FirebaseDatabase.getInstance().getReference("Users")
                                     .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
