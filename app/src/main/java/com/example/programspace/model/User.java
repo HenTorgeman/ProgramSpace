@@ -27,7 +27,7 @@ public class User {
     public  User(){}
 
     public User(String name, String email, String password, String description) {
-        this.id = IdGenerator.instance.getUserNextId();
+      //  this.id = IdGenerator.instance.getUserNextId();
         this.name = name;
         this.email = email;
         this.password = password;

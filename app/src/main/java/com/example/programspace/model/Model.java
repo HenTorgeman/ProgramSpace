@@ -23,8 +23,6 @@ public class Model {
 
     }
 
-
-
     public interface GetAllProjectsListener{
         void OnComplete(List<Project> list);
     }
@@ -49,7 +47,6 @@ public class Model {
 
 
     }
-
 
     public interface AddUserListener{
         void OnComplete();
