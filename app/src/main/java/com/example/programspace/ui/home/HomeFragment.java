@@ -1,9 +1,15 @@
 package com.example.programspace.ui.home;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -17,6 +23,8 @@ import com.example.programspace.databinding.FragmentHomeBinding;
 import com.example.programspace.model.Model;
 import com.example.programspace.model.Project;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
 import java.util.List;
 
 
@@ -31,7 +39,9 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
-        
+
+
+
 
         RecyclerView list = root.findViewById(R.id.projectlist_rv);
         list.setHasFixedSize(true);
@@ -75,6 +85,9 @@ public class HomeFragment extends Fragment {
         TextView nameTv;
         TextView pronameTV;
         TextView descriptionTV;
+        TextView monthesTV;
+        TextView dateTV;
+        CheckBox volCB;
 
 
         public MyViewHolder(@NonNull View itemView, com.example.programspace.ui.home.HomeFragment.OnItemClickListener listener) {
@@ -82,6 +95,9 @@ public class HomeFragment extends Fragment {
             nameTv = itemView.findViewById(R.id.list_row_name);
             pronameTV = itemView.findViewById(R.id.list_row_project_name);
             descriptionTV = itemView.findViewById(R.id.list_row_description);
+            monthesTV = itemView.findViewById(R.id.list_row_monthesnum);
+            dateTV = itemView.findViewById(R.id.list_row_date_tv);
+            volCB = itemView.findViewById(R.id.list_row_volcb);
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -110,11 +126,21 @@ public class HomeFragment extends Fragment {
             return holder;
         }
 
+        //TODO::add the poster information
         @Override
         public void onBindViewHolder(@NonNull com.example.programspace.ui.home.HomeFragment.MyViewHolder holder, int position) {
             Project project = data.get(position);
-            holder.nameTv.setText(project.getProject_name());
+            Date date = project.getCreationDate();
+            SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+            String datest = formatter.format(date);
+            holder.dateTV.setText(datest);
+            holder.volCB.setChecked(project.isVolunteer());
+            holder.pronameTV.setText(project.getProject_name());
             holder.descriptionTV.setText(project.getProject_des());
+            holder.monthesTV.setText(Integer.toString(project.getDuration()));
+
+
+
         }
 
         @Override
@@ -124,4 +150,9 @@ public class HomeFragment extends Fragment {
             return data.size();
         }
     }
+
+
+
+
+
 }

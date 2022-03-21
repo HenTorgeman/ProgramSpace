@@ -39,6 +39,8 @@ public class LogInActivity extends AppCompatActivity {
 
     }
 
+    //pass id
+
     private void open_app(){
         Intent intent=new Intent(this, ContentMainActivity.class);
         startActivity(intent);

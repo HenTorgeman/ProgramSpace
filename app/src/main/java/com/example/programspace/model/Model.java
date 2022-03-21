@@ -27,7 +27,7 @@ public class Model {
         void OnComplete(List<Project> list);
     }
     public void getAllProjects(GetAllProjectsListener listener){
-        modelFireBase.getAllProjects( listener);
+        modelFireBase.getAllProjects(listener);
 
     }
 
@@ -36,7 +36,6 @@ public class Model {
     }
     public void addProject(Project project, AddProjectListener listener){
         modelFireBase.addProject(project, listener);
-
     }
 
     public interface GetAllUsersListener{
@@ -54,6 +53,15 @@ public class Model {
     public void addUser(User user, AddUserListener listener){
         modelFireBase.addUser( user,  listener);
 
+    }
+
+    public interface GetUserById {
+        void onComplete(User user);
+    }
+
+    public User getStudentById(int studentId, GetUserById listener) {
+        modelFireBase.getUserById(studentId, listener);
+        return null;
     }
 
     public interface GetAllTechskillsListener{

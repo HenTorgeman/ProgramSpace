@@ -16,7 +16,7 @@ public class User {
 
     @PrimaryKey
     @NonNull
-    int id;
+    private int id;
     String name= "",email="",password="";
     Image user_image;
     String description;
@@ -92,5 +92,18 @@ public class User {
         //json.put("other projects",otherProjects);
 
         return json;
+    }
+    public static User create(Map<String, Object> json) {
+       int id = (int) json.get("id");
+       String name = (String) json.get("name");
+       String password = (String) json.get("password");
+       String email = (String) json.get("email");
+       String description = (String) json.get("description");
+       Image image = (Image) json.get("image");
+
+       User user = new User(name,email,password,description);
+       user.setId(id);
+
+       return user;
     }
 }
