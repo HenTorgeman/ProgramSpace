@@ -29,7 +29,7 @@ public class Model {
         void OnComplete(List<Project> list);
     }
     public void getAllProjects(GetAllProjectsListener listener){
-        modelFireBase.getAllProjects( listener);
+        modelFireBase.getAllProjects(listener);
 
     }
 

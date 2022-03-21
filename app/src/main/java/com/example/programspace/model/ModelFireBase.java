@@ -40,6 +40,8 @@ public class ModelFireBase {
                                 }
                             }
                         }
+                        listener.OnComplete(list);
+                        listener.OnComplete(list);
                     }
                 });
     }

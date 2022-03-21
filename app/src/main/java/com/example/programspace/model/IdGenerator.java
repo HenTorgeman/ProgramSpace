@@ -1,9 +1,13 @@
 package com.example.programspace.model;
 
+import java.util.List;
+
 public class IdGenerator {
     int userNextId;
     int projectNextId;
     int techSkillNextId;
+    //List<Project> projects; //want ti get last id somehow
+    //List<User> users;
 
     public static final IdGenerator instance =new IdGenerator();
 

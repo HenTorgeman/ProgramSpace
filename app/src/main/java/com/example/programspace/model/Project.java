@@ -7,6 +7,7 @@ import androidx.annotation.NonNull;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import com.google.firebase.Timestamp;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -24,7 +25,6 @@ public class Project {
     String project_name;
     String project_des;
 
-    Image project_image;
 
     int duration;
     boolean volunteer;// True=volunteer/ False=PayCheck
@@ -54,9 +54,10 @@ public class Project {
     public Project(){};
 
     //added constructor
-    public Project(int project_admin_id, String project_name, String project_des,Image project_image, int duration, boolean volunteer, Date creationDate) {
+    public Project(int project_admin_id, String project_name, String project_des, int duration, boolean volunteer, Date creationDate ) {
         this.id=IdGenerator.instance.getProjectNextId();
         this.project_admin_id = project_admin_id;
+        this.collaborator_id = 0;
         this.project_name = project_name;
         this.project_des = project_des;
         this.duration = duration;
@@ -68,12 +69,11 @@ public class Project {
         //this.post_status = post_status;
         //this.requirements_skills = requirements_skills;
     }
-    public Project(int project_admin_id,int collaborator_id, String project_name, String project_des,Image project_image,int duration, boolean volunteer, boolean isDeleted, Date creationDate, Date closeDate) {
+    public Project(int project_admin_id,int collaborator_id, String project_name, String project_des,int duration, boolean volunteer, boolean isDeleted, Date creationDate, Date closeDate) {
         this.project_admin_id = project_admin_id;
         this.collaborator_id = collaborator_id;
         this.project_name = project_name;
         this.project_des = project_des;
-        this.project_image = project_image;
         this.duration = duration;
         this.volunteer = volunteer;
         this.isDeleted = isDeleted;
@@ -118,14 +118,6 @@ public class Project {
 
     public void setProject_des(String project_des) {
         this.project_des = project_des;
-    }
-
-    public Image getProject_image() {
-        return project_image;
-    }
-
-    public void setProject_image(Image project_image) {
-        this.project_image = project_image;
     }
 
     public int getDuration() {
@@ -187,7 +179,6 @@ public class Project {
         json.put("collaborator_id",String.valueOf(collaborator_id));
         json.put("project_name",project_name);
         json.put("project_des",project_des);
-        json.put("project_image",project_image);
         json.put("duration",String.valueOf(duration));
         json.put("volunteer",volunteer);
         json.put("isDeleted",isDeleted);
@@ -199,19 +190,20 @@ public class Project {
 
     }
     public static Project create(Map<String, Object> data) {
-        int id = (int)data.get("id");
-        int project_admin_id = (int)data.get("project_admin_id");
-        int collaborator_id = (int)data.get("collaborator_id");
+        int id = Integer.parseInt((String)data.get("id"));
+        int project_admin_id = Integer.parseInt((String)data.get("project_admin_id"));
+        int collaborator_id = Integer.parseInt((String)data.get("collaborator_id"));
         String project_name = (String)data.get("project_name");
         String project_des = (String)data.get("project_des");
-        Image project_image = (Image)data.get("project_image");
-        int duration = (int)data.get("duration");
+        int duration = Integer.parseInt((String)data.get("duration"));
         boolean volunteer =(boolean)data.get("volunteer");
         boolean isDeleted =(boolean)data.get("isDeleted");
-        Date creationDate =(Date)data.get("creationDate");
-        Date closeDate =(Date)data.get("closeDate");
+        Timestamp timeCreation = (Timestamp)data.get("creationDate");
+        Date creationDate = timeCreation.toDate();
+        Timestamp timeClose = (Timestamp)data.get("creationDate");
+        Date closeDate = timeClose.toDate();
 
-        Project project =new Project(project_admin_id,collaborator_id,project_name,project_des,project_image,duration,volunteer,isDeleted,creationDate,closeDate);
+        Project project =new Project(project_admin_id,collaborator_id,project_name,project_des,duration,volunteer,isDeleted,creationDate,closeDate);
         project.setId(id);
 
         return project;
