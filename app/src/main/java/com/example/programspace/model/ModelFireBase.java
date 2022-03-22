@@ -112,4 +112,22 @@ public class ModelFireBase {
     }
 
 
+    public void getProjectById(int projectId, Model.GetProjectById listener) {
+        db.collection("projects")
+                .document(String.valueOf(projectId))
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        Project prj = null;
+                        if (task.isSuccessful() & task.getResult()!= null){
+                            prj= prj.create(task.getResult().getData());
+                        }
+                        listener.onComplete(prj);
+                    }
+                });
+
+
+
+    }
 }

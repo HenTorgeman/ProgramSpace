@@ -15,6 +15,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -40,9 +41,6 @@ public class HomeFragment extends Fragment {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-
-
-
         RecyclerView list = root.findViewById(R.id.projectlist_rv);
         list.setHasFixedSize(true);
 
@@ -62,14 +60,29 @@ public class HomeFragment extends Fragment {
         });*/
 
         //on project click in list
-        /*adapter.setOnItemClickListener(new OnItemClickListener() {
+        adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
+
             public void onItemClick(int position) {
-                String id = data.get(position).getId();
-                Navigation.findNavController(view).navigate(HomeFragmentDirections.actionNavHomeToStudentDetailsFragment2(id,Integer.toString(position)));
+                int id =data.get(position).getId();
+                Navigation.findNavController(root).navigate(HomeFragmentDirections.actionNavigationHomeToProjectDetailsFragment(id));
+
 
             }
-        });*/
+        });
+
+//        adapter.setOnItemClickListener(new OnItemClickListener() {
+//            @Override
+//            public void onItemClick(View v, int position) {
+//                String restaurantName = restaurantList.get(position).getName();
+//                String restaurantId = restaurantList.get(position).getId();
+//                Log.d("TAG","Restaurant clicked: " + restaurantName + " " + restaurantId);
+//                Navigation.findNavController(v).navigate(HomeRestaurantListRvFragmentDirections.actionHomeRestaurantListRvFragmentToRestaurantPageRvFragment(restaurantId));
+//                //Navigation.findNavController(v).navigate(StudentListRvFragmentDirections.actionStudentListRvFragmentToStudentDetailsFragment(stId));
+//
+//            }
+//        });
+
         Refresh();
         return root;
     }

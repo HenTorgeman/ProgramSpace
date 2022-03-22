@@ -25,12 +25,9 @@ public class Project {
     String project_name;
     String project_des;
 
-
     int duration;
     boolean volunteer;// True=volunteer/ False=PayCheck
     boolean isDeleted;
-
-
 
     Date creationDate;
     Date closeDate;

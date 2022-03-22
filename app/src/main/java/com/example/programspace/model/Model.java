@@ -58,9 +58,8 @@ public class Model {
     public interface GetUserById {
         void onComplete(User user);
     }
-
-    public User getStudentById(int studentId, GetUserById listener) {
-        modelFireBase.getUserById(studentId, listener);
+    public User getUserById(int userId, GetUserById listener) {
+        modelFireBase.getUserById(userId, listener);
         return null;
     }
 
@@ -75,22 +74,14 @@ public class Model {
 
 
 
-    /*public void editProject(Project project, int index) {
-        data.set(index, project);
+    public interface GetProjectById {
+        void onComplete(Project project);
     }
-
-    public Project getProjectById(String projectid) {
-        for (Project p:data
-        ) {
-            if (p.getId().equals(studentId)){
-                return p;
-            }
-        }
+    public Project getProjectById(int projectId, GetProjectById listener) {
+        modelFireBase.getProjectById(projectId, listener);
         return null;
     }
 
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public void removeStudent(String id) {
-        data.removeIf(s -> s.getId().equals(id));
-    }*/
+
+
 }

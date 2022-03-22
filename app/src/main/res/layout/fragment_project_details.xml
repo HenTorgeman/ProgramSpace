@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.ProjectDetailsFragment">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/projectDescriptionDetails_Tv2"
+            android:layout_width="186dp"
+            android:layout_height="20dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="16dp"
+            android:text="User Name"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/projectDurationDetails_Tv" />
+
+        <Button
+            android:id="@+id/postProject_Bt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Edit"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/volunteer_cb" />
+
+        <CheckBox
+            android:id="@+id/volunteer_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="Volunteer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.103"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/projectDescriptionDetails_Tv2" />
+
+        <TextView
+            android:id="@+id/projectDurationDetails_Tv"
+            android:layout_width="183dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="36dp"
+            android:text="Duration in months:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/projectImgDetails_ImgV" />
+
+        <TextView
+            android:id="@+id/projectDescriptionDetails_Tv"
+            android:layout_width="186dp"
+            android:layout_height="20dp"
+            android:layout_marginTop="28dp"
+            android:text="Project Description"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.146"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/projectNameDetails_Tv" />
+
+        <TextView
+            android:id="@+id/projectNameDetails_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:text="Project Name"
+            android:textSize="34sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.137"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/projectUseNameDetailsValue_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.266"
+            app:layout_constraintStart_toEndOf="@+id/projectDescriptionDetails_Tv2"
+            app:layout_constraintTop_toBottomOf="@+id/projectDurationDetailsValue_Tv" />
+
+        <TextView
+            android:id="@+id/projectDurationDetailsValue_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="36dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.281"
+            app:layout_constraintStart_toEndOf="@+id/projectDurationDetails_Tv"
+            app:layout_constraintTop_toBottomOf="@+id/projectImgDetails_ImgV" />
+
+        <TextView
+            android:id="@+id/projectDateDetailsValue_Tv"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.954"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/projectImgDetails_ImgV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.116"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/projectDescriptionDetails_Tv"
+            tools:src="@tools:sample/avatars" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</FrameLayout>

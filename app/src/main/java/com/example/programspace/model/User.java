@@ -94,7 +94,7 @@ public class User {
         return json;
     }
     public static User create(Map<String, Object> json) {
-       int id = (int) json.get("id");
+        int id = Integer.parseInt((String)json.get("id"));
        String name = (String) json.get("name");
        String password = (String) json.get("password");
        String email = (String) json.get("email");
