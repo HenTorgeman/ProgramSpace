@@ -1,5 +1,6 @@
 package com.example.programspace.model;
 
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -19,10 +20,16 @@ public class Model {
     Handler mainThread = HandlerCompat.createAsync(Looper.getMainLooper());
 
     ModelFireBase modelFireBase =  new ModelFireBase();
-    private Model(){
 
+
+
+
+    public interface saveProjectImageListener{
+        void onComplete(String url);
     }
-
+    public void saveProjectImage(Bitmap imageBitmap, String imageName, saveProjectImageListener listener) {
+        modelFireBase.saveProjectImage(imageBitmap,imageName,listener);
+    }
 
 
     public interface GetAllProjectsListener{
@@ -62,8 +69,17 @@ public class Model {
         void onComplete(User user);
     }
 
-    public User getStudentById(int studentId, GetUserById listener) {
-        modelFireBase.getUserById(studentId, listener);
+    public User getUserById(int userId, GetUserById listener) {
+        modelFireBase.getUserById(userId, listener);
+        return null;
+    }
+
+    public interface GetUserByEmail{
+        void onComplete(User user);
+    }
+
+    public User getUserByEmail(String userEmail, GetUserByEmail listener) {
+        modelFireBase.getUserByEmail(userEmail, listener);
         return null;
     }
 

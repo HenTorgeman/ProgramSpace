@@ -11,8 +11,11 @@ import com.example.programspace.databinding.ActivityContentMainBinding;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.navigation.NavArgument;
 import androidx.navigation.NavController;
+import androidx.navigation.NavDestination;
 import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
 import androidx.navigation.ui.NavigationUI;
@@ -31,6 +34,12 @@ public class ContentMainActivity extends AppCompatActivity {
         binding = ActivityContentMainBinding.inflate(getLayoutInflater());
         setContentView(binding.getRoot());
 
+        Bundle b = getIntent().getExtras();
+        int value = -1; // or other values
+        if(b != null)
+            value = b.getInt("userId");
+        int finalValue = value;
+
         BottomNavigationView navView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
@@ -38,8 +47,24 @@ public class ContentMainActivity extends AppCompatActivity {
                 R.id.navigation_home, R.id.navigation_profile, R.id.navigation_notifications)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_content_main);
+        navController.setGraph(R.navigation.mobile_navigation, b);
+/*
+        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+            @Override
+            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+                switch (destination.getId()) {
+                    case R.id.navigation_home:
+                        NavArgument argumentHome = new NavArgument.Builder().setDefaultValue(finalValue).build();
+                        destination.addArgument("userId", argumentHome);
+                }
+            }
+        });
+
+ */
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
+
+
 
     }
 

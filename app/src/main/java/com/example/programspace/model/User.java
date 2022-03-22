@@ -18,7 +18,6 @@ public class User {
     @NonNull
     private int id;
     String name= "",email="",password="";
-    Image user_image;
     String description;
     //List<Project> myProjects; //Project I am Admin
     //List<Project> otherProjects; //Project I an joined
@@ -31,7 +30,6 @@ public class User {
         this.name = name;
         this.email = email;
         this.password = password;
-        //this.user_image = user_image;
         this.description = description;
         //this.mySkills = mySkills;
         //myProjects= new LinkedList<Project>();
@@ -70,13 +68,7 @@ public class User {
         this.password = password;
     }
 
-    public Image getUser_image() {
-        return user_image;
-    }
 
-    public void setUser_image(Image user_image) {
-        this.user_image = user_image;
-    }
 
 
     public Map<String, Object> toJson() {
@@ -86,7 +78,6 @@ public class User {
         json.put("password",password);
         json.put("email",email);
         json.put("description",description);
-        json.put("image",user_image);
         //json.put("user's projects", myProjects);
         //json.put("user's skills", mySkills);
         //json.put("other projects",otherProjects);
@@ -94,12 +85,11 @@ public class User {
         return json;
     }
     public static User create(Map<String, Object> json) {
-       int id = (int) json.get("id");
+       int id = Integer.parseInt((String)json.get("id"));
        String name = (String) json.get("name");
        String password = (String) json.get("password");
        String email = (String) json.get("email");
        String description = (String) json.get("description");
-       Image image = (Image) json.get("image");
 
        User user = new User(name,email,password,description);
        user.setId(id);
