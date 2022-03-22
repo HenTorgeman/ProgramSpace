@@ -31,6 +31,7 @@ public class Project {
 
     Date creationDate;
     Date closeDate;
+    private String imageUrl;
 
 
     //projectStatus status;
@@ -181,6 +182,7 @@ public class Project {
         json.put("isDeleted",isDeleted);
         json.put("creationDate",creationDate);
         json.put("closeDate",closeDate);
+        json.put("imageUrl",imageUrl);
 
 
         return json;
@@ -199,12 +201,22 @@ public class Project {
         Date creationDate = timeCreation.toDate();
         Timestamp timeClose = (Timestamp)data.get("creationDate");
         Date closeDate = timeClose.toDate();
+        String imageUrl = (String)data.get("imageUrl");
 
         Project project =new Project(project_admin_id,collaborator_id,project_name,project_des,duration,volunteer,isDeleted,creationDate,closeDate);
         project.setId(id);
+        project.setImageUrl(imageUrl);
 
         return project;
 
 
+    }
+
+    public void setImageUrl(String url) {
+        this.imageUrl =url;
+    }
+
+    public String getImageUrl(){
+        return this.imageUrl;
     }
 }

@@ -1,6 +1,8 @@
 package com.example.programspace.model;
 
 
+import android.graphics.Bitmap;
+import android.net.Uri;
 import android.util.Log;
 
 import androidx.annotation.NonNull;
@@ -14,7 +16,11 @@ import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
+import com.google.firebase.storage.FirebaseStorage;
+import com.google.firebase.storage.StorageReference;
+import com.google.firebase.storage.UploadTask;
 
+import java.io.ByteArrayOutputStream;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -108,7 +114,51 @@ public class ModelFireBase {
 
     }
 
+    public void getUserByEmail(String userEmail, Model.GetUserByEmail listener) {
+        db.collection("users")
+                .document(userEmail)
+                .get()
+                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
+                    @Override
+                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
+                        User user = null;
+                        if (task.isSuccessful() & task.getResult()!= null){
+                            user = user.create(task.getResult().getData());
+                        }
+                        listener.onComplete(user);
+                    }
+                });
+
+    }
+
     public void getAllTechSkills(Model.GetAllTechskillsListener listener) {
+    }
+
+    /**
+     * Firebase Storage
+     */
+    FirebaseStorage storage = FirebaseStorage.getInstance();
+
+
+    public void saveProjectImage(Bitmap imageBitmap, String imageName, Model.saveProjectImageListener listener) {
+        StorageReference storageRef = storage.getReference();
+        StorageReference imgRef = storageRef.child("user_avatars/" + imageName);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        UploadTask uploadTask = imgRef.putBytes(data);
+        uploadTask.addOnFailureListener(exception -> listener.onComplete(null))
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        imgRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                            Uri downloadUrl = uri;
+                            listener.onComplete(downloadUrl.toString());
+                        });
+                    }
+                });
     }
 
 

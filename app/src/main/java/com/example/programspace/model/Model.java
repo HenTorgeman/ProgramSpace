@@ -1,5 +1,6 @@
 package com.example.programspace.model;
 
+import android.graphics.Bitmap;
 import android.os.Build;
 import android.os.Handler;
 import android.os.Looper;
@@ -19,9 +20,17 @@ public class Model {
     Handler mainThread = HandlerCompat.createAsync(Looper.getMainLooper());
 
     ModelFireBase modelFireBase =  new ModelFireBase();
-    private Model(){
 
+
+
+
+    public interface saveProjectImageListener{
+        void onComplete(String url);
     }
+    public void saveProjectImage(Bitmap imageBitmap, String imageName, saveProjectImageListener listener) {
+        modelFireBase.saveProjectImage(imageBitmap,imageName,listener);
+    }
+
 
     public interface GetAllProjectsListener{
         void OnComplete(List<Project> list);
@@ -47,6 +56,7 @@ public class Model {
 
     }
 
+
     public interface AddUserListener{
         void OnComplete();
     }
@@ -58,8 +68,18 @@ public class Model {
     public interface GetUserById {
         void onComplete(User user);
     }
+
     public User getUserById(int userId, GetUserById listener) {
         modelFireBase.getUserById(userId, listener);
+        return null;
+    }
+
+    public interface GetUserByEmail{
+        void onComplete(User user);
+    }
+
+    public User getUserByEmail(String userEmail, GetUserByEmail listener) {
+        modelFireBase.getUserByEmail(userEmail, listener);
         return null;
     }
 
@@ -74,14 +94,22 @@ public class Model {
 
 
 
-    public interface GetProjectById {
-        void onComplete(Project project);
+    /*public void editProject(Project project, int index) {
+        data.set(index, project);
     }
-    public Project getProjectById(int projectId, GetProjectById listener) {
-        modelFireBase.getProjectById(projectId, listener);
+
+    public Project getProjectById(String projectid) {
+        for (Project p:data
+        ) {
+            if (p.getId().equals(studentId)){
+                return p;
+            }
+        }
         return null;
     }
 
-
-
+    @RequiresApi(api = Build.VERSION_CODES.N)
+    public void removeStudent(String id) {
+        data.removeIf(s -> s.getId().equals(id));
+    }*/
 }

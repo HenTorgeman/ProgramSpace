@@ -10,12 +10,12 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckBox;
 import android.widget.EditText;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -23,6 +23,7 @@ import com.example.programspace.R;
 import com.example.programspace.databinding.FragmentHomeBinding;
 import com.example.programspace.model.Model;
 import com.example.programspace.model.Project;
+import com.squareup.picasso.Picasso;
 
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -32,6 +33,7 @@ import java.util.List;
 public class HomeFragment extends Fragment {
 
     List<Project> data;
+    int userId;
     FragmentHomeBinding binding;
     MyAdapter adapter;
 
@@ -40,6 +42,11 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         binding = FragmentHomeBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
+
+        int temp = getArguments().getInt("userId");
+        userId = temp;
+
+
 
         RecyclerView list = root.findViewById(R.id.projectlist_rv);
         list.setHasFixedSize(true);
@@ -60,29 +67,14 @@ public class HomeFragment extends Fragment {
         });*/
 
         //on project click in list
-        adapter.setOnItemClickListener(new OnItemClickListener() {
+        /*adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
-
             public void onItemClick(int position) {
-                int id =data.get(position).getId();
-                Navigation.findNavController(root).navigate(HomeFragmentDirections.actionNavigationHomeToProjectDetailsFragment(id));
-
+                String id = data.get(position).getId();
+                Navigation.findNavController(view).navigate(HomeFragmentDirections.actionNavHomeToStudentDetailsFragment2(id,Integer.toString(position)));
 
             }
-        });
-
-//        adapter.setOnItemClickListener(new OnItemClickListener() {
-//            @Override
-//            public void onItemClick(View v, int position) {
-//                String restaurantName = restaurantList.get(position).getName();
-//                String restaurantId = restaurantList.get(position).getId();
-//                Log.d("TAG","Restaurant clicked: " + restaurantName + " " + restaurantId);
-//                Navigation.findNavController(v).navigate(HomeRestaurantListRvFragmentDirections.actionHomeRestaurantListRvFragmentToRestaurantPageRvFragment(restaurantId));
-//                //Navigation.findNavController(v).navigate(StudentListRvFragmentDirections.actionStudentListRvFragmentToStudentDetailsFragment(stId));
-//
-//            }
-//        });
-
+        });*/
         Refresh();
         return root;
     }
@@ -95,6 +87,8 @@ public class HomeFragment extends Fragment {
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
+        ImageView avatarImv;
+        ImageView projectImv;
         TextView nameTv;
         TextView pronameTV;
         TextView descriptionTV;
@@ -111,6 +105,9 @@ public class HomeFragment extends Fragment {
             monthesTV = itemView.findViewById(R.id.list_row_monthesnum);
             dateTV = itemView.findViewById(R.id.list_row_date_tv);
             volCB = itemView.findViewById(R.id.list_row_volcb);
+            avatarImv = itemView.findViewById(R.id.list_row_avatar_imv);
+            projectImv = itemView.findViewById(R.id.list_row_project_imgv);
+
             itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -139,7 +136,7 @@ public class HomeFragment extends Fragment {
             return holder;
         }
 
-        //TODO::add the poster information
+        //TODO::add the poster information in oncomplete get user put function bind
         @Override
         public void onBindViewHolder(@NonNull com.example.programspace.ui.home.HomeFragment.MyViewHolder holder, int position) {
             Project project = data.get(position);
@@ -151,9 +148,10 @@ public class HomeFragment extends Fragment {
             holder.pronameTV.setText(project.getProject_name());
             holder.descriptionTV.setText(project.getProject_des());
             holder.monthesTV.setText(Integer.toString(project.getDuration()));
-
-
-
+            holder.avatarImv.setImageResource(R.drawable.profile);
+            if (project.getImageUrl() != null) {
+                Picasso.get().load(project.getImageUrl()).into(holder.projectImv);
+            }
         }
 
         @Override
@@ -163,9 +161,5 @@ public class HomeFragment extends Fragment {
             return data.size();
         }
     }
-
-
-
-
 
 }

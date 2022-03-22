@@ -15,11 +15,12 @@
             android:id="@+id/postProject_Bt"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="148dp"
+            android:layout_marginTop="20dp"
             android:text="Post Project"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/inp_ProjectDuration" />
+            app:layout_constraintTop_toBottomOf="@+id/add_project_im" />
 
         <EditText
             android:id="@+id/inp_ProjectName"
@@ -104,6 +105,33 @@
             app:layout_constraintHorizontal_bias="1.0"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/inp_ProjectDescription" />
+
+        <ImageView
+            android:id="@+id/add_project_im"
+            android:layout_width="162dp"
+            android:layout_height="133dp"
+            android:layout_marginTop="28dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/projectDuration_TV"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageButton
+            android:id="@+id/add_project_cam_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_camera"
+            app:layout_constraintBottom_toBottomOf="@+id/add_project_im"
+            app:layout_constraintStart_toStartOf="@+id/add_project_im" />
+
+        <ImageButton
+            android:id="@+id/add_project_gallery_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@android:drawable/ic_menu_gallery"
+            app:layout_constraintBottom_toBottomOf="@+id/add_project_im"
+            app:layout_constraintEnd_toEndOf="@+id/add_project_im" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </FrameLayout>

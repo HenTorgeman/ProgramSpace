@@ -10,9 +10,9 @@
         android:name="com.example.programspace.ui.home.HomeFragment"
         android:label="@string/title_home"
         tools:layout="@layout/fragment_home" >
-        <action
-            android:id="@+id/action_navigation_home_to_projectDetailsFragment"
-            app:destination="@id/projectDetailsFragment" />
+        <argument
+            android:name="userId"
+            app:argType="integer" />
     </fragment>
 
     <fragment
@@ -34,13 +34,4 @@
     <action
         android:id="@+id/action_global_addProjectFragment"
         app:destination="@id/addProjectFragment" />
-    <fragment
-        android:id="@+id/projectDetailsFragment"
-        android:name="com.example.programspace.ui.home.ProjectDetailsFragment"
-        android:label="fragment_project_details"
-        tools:layout="@layout/fragment_project_details" >
-        <argument
-            android:name="ProjectId"
-            app:argType="integer" />
-    </fragment>
 </navigation>

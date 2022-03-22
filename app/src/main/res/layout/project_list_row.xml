@@ -6,6 +6,17 @@
     android:layout_height="wrap_content"
     android:background="@color/white">
 
+    <ImageView
+        android:id="@+id/list_row_project_imgv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="77dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/list_row_collab_button"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/list_row_monthes" />
+
     <TextView
         android:id="@+id/list_row_monthes"
         android:layout_width="120dp"
@@ -16,13 +27,13 @@
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/list_row_collab_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.209"
+        app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.833" />
+        app:layout_constraintTop_toBottomOf="@+id/list_row_description"
+        app:layout_constraintVertical_bias="0.26" />
 
     <ImageView
-        android:id="@+id/imageView"
+        android:id="@+id/list_row_avatar_imv"
         android:layout_width="45dp"
         android:layout_height="37dp"
         android:layout_marginTop="8dp"
@@ -46,9 +57,9 @@
         app:layout_constraintBottom_toTopOf="@+id/list_row_project_name"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView"
+        app:layout_constraintStart_toEndOf="@+id/list_row_avatar_imv"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.166" />
 
     <TextView
         android:id="@+id/list_row_project_name"
@@ -58,23 +69,21 @@
         android:text="TextView"
         app:layout_constraintBottom_toTopOf="@+id/list_row_description"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.188"
+        app:layout_constraintHorizontal_bias="0.154"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.776" />
 
     <TextView
         android:id="@+id/list_row_description"
-        android:layout_width="288dp"
-        android:layout_height="105dp"
-        android:layout_marginBottom="4dp"
+        android:layout_width="293dp"
+        android:layout_height="73dp"
+        android:layout_marginTop="76dp"
         android:text="TextView"
-        app:layout_constraintBottom_toTopOf="@+id/list_row_monthes"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintHorizontal_bias="0.423"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <Button
         android:id="@+id/list_row_collab_button"
@@ -87,34 +96,35 @@
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintVertical_bias="0.995" />
 
     <CheckBox
         android:id="@+id/list_row_volcb"
         android:layout_width="95dp"
         android:layout_height="25dp"
+        android:layout_marginBottom="56dp"
+        android:clickable="false"
+        android:focusable="false"
         android:text="Volunteer"
         android:textSize="12sp"
-        android:focusable="false"
-        android:clickable="false"
         app:layout_constraintBottom_toTopOf="@+id/list_row_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toEndOf="@+id/list_row_project_name" />
+        app:layout_constraintStart_toEndOf="@+id/list_row_project_name"
+        app:layout_constraintTop_toBottomOf="@+id/list_row_date_tv"
+        app:layout_constraintVertical_bias="1.0" />
 
     <TextView
         android:id="@+id/list_row_monthesnum"
         android:layout_width="38dp"
         android:layout_height="19dp"
-        android:layout_marginTop="4dp"
+        android:layout_marginTop="32dp"
         android:text="TextView"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/list_row_collab_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toEndOf="@+id/list_row_monthes"
-        app:layout_constraintTop_toBottomOf="@+id/list_row_description"
-        app:layout_constraintVertical_bias="0.017" />
+        app:layout_constraintTop_toBottomOf="@+id/list_row_description" />
 
     <TextView
         android:id="@+id/list_row_date_tv"
@@ -123,11 +133,9 @@
         android:layout_marginTop="8dp"
         android:text="TextView"
         android:textAlignment="textEnd"
-        app:layout_constraintBottom_toTopOf="@+id/list_row_volcb"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/list_row_name"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0" />
+        app:layout_constraintTop_toTopOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
