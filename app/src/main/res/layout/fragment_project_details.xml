@@ -23,7 +23,7 @@
             app:layout_constraintTop_toBottomOf="@+id/projectDurationDetails_Tv" />
 
         <Button
-            android:id="@+id/postProject_Bt"
+            android:id="@+id/Edit_PostDetails_Btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Edit"

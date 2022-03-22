@@ -49,7 +49,7 @@ public class AddProjectFragment extends Fragment {
         descriptionEt = view.findViewById(R.id.inp_ProjectDescription);
         durationEt = view.findViewById(R.id.inp_ProjectDuration);
         cbVol = view.findViewById(R.id.volunteer_cb);
-        saveBtn = view.findViewById(R.id.postProject_Bt);
+        saveBtn = view.findViewById(R.id.Edit_PostDetails_Btn);
         avatarImv = view.findViewById(R.id.add_project_im);
 
         camBtn = view.findViewById(R.id.add_project_cam_btn);

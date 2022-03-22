@@ -91,7 +91,14 @@ public class Model {
 
     }
 
+    public interface GetProjectById {
+        void onComplete(Project project);
+    }
 
+    public User getProjectById(int projectId, GetProjectById listener) {
+        modelFireBase.getProjectById(projectId,listener);
+        return null;
+    }
 
 
     /*public void editProject(Project project, int index) {
