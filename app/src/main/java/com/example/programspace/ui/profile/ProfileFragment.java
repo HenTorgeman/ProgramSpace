@@ -34,17 +34,17 @@ public class ProfileFragment extends Fragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        int logInUserId = getArguments().getInt("userId");
+        //int logInUserId = getArguments().getInt("userId");
 
         name= root.findViewById(R.id.UserName_Profile_tv);
         description = root.findViewById(R.id.AboutUser_Profile_tv);
         profile_Image = root.findViewById(R.id.PhotoUser_Profile_iv);
 
-        Model.instance.getUserById(logInUserId, user -> {
-           name.setText(user.getName());
-           description.setText(user.getDescription());
-           //put image
-        });
+//        Model.instance.getUserById(logInUserId, user -> {
+//           name.setText(user.getName());
+//           description.setText(user.getDescription());
+//           //put image
+//        });
 
         return root;
     }

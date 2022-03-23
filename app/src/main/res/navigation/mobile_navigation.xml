@@ -28,11 +28,6 @@
     </fragment>
 
     <fragment
-        android:id="@+id/navigation_notifications"
-        android:name="com.example.programspace.ui.notifications.NotificationsFragment"
-        android:label="@string/title_notifications"
-        tools:layout="@layout/fragment_notifications" />
-    <fragment
         android:id="@+id/addProjectFragment"
         android:name="com.example.programspace.ui.home.AddProjectFragment"
         android:label="Post Project"
