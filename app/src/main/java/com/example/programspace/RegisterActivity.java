@@ -34,7 +34,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
     static final int SELECT_IMAGE = 2;
-    private TextView txt_UserRegister;
     private EditText inp_name,inp_email,inp_password,inp_des;
     private ProgressBar pb;
 
