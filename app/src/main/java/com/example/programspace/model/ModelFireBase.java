@@ -148,6 +148,27 @@ public class ModelFireBase {
 
     public void saveProjectImage(Bitmap imageBitmap, String imageName, Model.saveProjectImageListener listener) {
         StorageReference storageRef = storage.getReference();
+        StorageReference imgRef = storageRef.child("project_pictures/" + imageName);
+
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();
+        imageBitmap.compress(Bitmap.CompressFormat.JPEG, 100, baos);
+        byte[] data = baos.toByteArray();
+
+        UploadTask uploadTask = imgRef.putBytes(data);
+        uploadTask.addOnFailureListener(exception -> listener.onComplete(null))
+                .addOnSuccessListener(new OnSuccessListener<UploadTask.TaskSnapshot>() {
+                    @Override
+                    public void onSuccess(UploadTask.TaskSnapshot taskSnapshot) {
+                        imgRef.getDownloadUrl().addOnSuccessListener(uri -> {
+                            Uri downloadUrl = uri;
+                            listener.onComplete(downloadUrl.toString());
+                        });
+                    }
+                });
+    }
+
+    public void saveUserImage(Bitmap imageBitmap, String imageName, Model.saveUserImageListener listener) {
+        StorageReference storageRef = storage.getReference();
         StorageReference imgRef = storageRef.child("user_avatars/" + imageName);
 
         ByteArrayOutputStream baos = new ByteArrayOutputStream();

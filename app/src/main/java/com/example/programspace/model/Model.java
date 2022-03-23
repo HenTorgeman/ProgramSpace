@@ -152,6 +152,13 @@ public class Model {
         modelFireBase.saveProjectImage(imageBitmap,imageName,listener);
     }
 
+    public interface saveUserImageListener{
+        void onComplete(String url);
+    }
+    public void saveUserImage(Bitmap imageBitmap, String imageName, saveUserImageListener listener) {
+        modelFireBase.saveUserImage(imageBitmap,imageName,listener);
+    }
+
 
     /*public void editProject(Project project, int index) {
         data.set(index, project);

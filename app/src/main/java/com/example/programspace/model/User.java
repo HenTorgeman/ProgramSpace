@@ -19,6 +19,9 @@ public class User {
     private int id;
     String name= "",email="",password="";
     String description;
+
+
+    private String imageUrl;
     //List<Project> myProjects; //Project I am Admin
     //List<Project> otherProjects; //Project I an joined
     //List<TechSkill> mySkills;
@@ -35,6 +38,14 @@ public class User {
         //myProjects= new LinkedList<Project>();
         //otherProjects= new LinkedList<Project>();
     }
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
+
 
     public int getId() {
         return id;
@@ -85,9 +96,7 @@ public class User {
         json.put("password",password);
         json.put("email",email);
         json.put("description",description);
-        //json.put("user's projects", myProjects);
-        //json.put("user's skills", mySkills);
-        //json.put("other projects",otherProjects);
+        json.put("imageUrl",imageUrl);
 
         return json;
     }
@@ -97,9 +106,11 @@ public class User {
        String password = (String) json.get("password");
        String email = (String) json.get("email");
        String description = (String) json.get("description");
+        String imageUrl = (String)json.get("imageUrl");
 
        User user = new User(name,email,password,description);
        user.setId(id);
+       user.setImageUrl(imageUrl);
 
        return user;
     }
