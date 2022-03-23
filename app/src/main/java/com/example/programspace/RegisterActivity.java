@@ -1,12 +1,15 @@
 package com.example.programspace;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.navigation.Navigation;
 
 import android.content.Intent;
+import android.os.Build;
 import android.os.Bundle;
 import android.util.Patterns;
+import android.view.Display;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -21,6 +24,8 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+
+import java.util.List;
 
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
@@ -56,9 +61,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         switch (view.getId()){
             case R.id.btn_register_new:
                 RegisterUser();
-                Intent intent=new Intent(this, ContentMainActivity.class);
-                startActivity(intent);
                 break;
+
         }
     }
 
@@ -99,35 +103,42 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 //change authentication
         pb.setVisibility(View.VISIBLE);
-        mAuth.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            User user=new User(name,email,password,des);
-                            Model.instance.addUser(user,()->{
-                                pb.setVisibility(View.GONE);
-                            });
 
+        Model.instance.getAllUsers(new Model.GetAllUsersListener() {
+            @Override
+            public void OnComplete(List<User> list) {
 
-                            /*FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(RegisterActivity.this,"User has been register Successfuly",Toast.LENGTH_LONG).show();
-                                        pb.setVisibility(View.GONE);
-                                    }
-                                    else{
-                                        Toast.makeText(RegisterActivity.this,"Failed to register! Please try again",Toast.LENGTH_LONG).show();
-                                        pb.setVisibility(View.GONE);
-                                    }
-                                }
-                            });*/
-                        }
-                    }
+                int id=list.size()+1;
+                User user=new User(id,name,email,password,des);
+                Model.instance.addUser(user,()-> {
+                    pb.setVisibility(View.GONE);
+                    openFeed(id);
                 });
 
+            }
+        });
+
+//        mAuth.createUserWithEmailAndPassword(email,password)
+//                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+//                    @Override
+//                    public void onComplete(@NonNull Task<AuthResult> task) {
+//                        if(task.isSuccessful()){
+//                            User user=new User(name,email,password,des);
+//                            Model.instance.addUser(user,()->{
+//                                pb.setVisibility(View.GONE);
+//                                openFeed();
+//                            });
+//
+//                        }
+//                    }
+//                });
+
     }
+
+    private void openFeed(int id) {
+        Intent intent=new Intent(this, ContentMainActivity.class);
+        startActivity(intent);
+
+    }
+
 }

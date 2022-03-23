@@ -72,7 +72,7 @@ public class HomeFragment extends Fragment {
             @Override
             public void onItemClick(int position) {
                 int id = data.get(position).getId();
-                Navigation.findNavController(root).navigate(HomeFragmentDirections.actionNavigationHomeToProjectDetailsFragment(id));
+                Navigation.findNavController(root).navigate(HomeFragmentDirections.actionNavigationHomeToProjectDetailsFragment(id,userId));
 
             }
         });

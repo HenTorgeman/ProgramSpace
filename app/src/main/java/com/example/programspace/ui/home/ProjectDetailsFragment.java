@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.navigation.Navigation;
 
 import android.view.LayoutInflater;
 import android.view.View;
@@ -23,7 +24,7 @@ public class ProjectDetailsFragment extends Fragment {
     Project project;
     User owner;
 
-    TextView project_name_tv,project_des_tv,project_duration_tv,project_username_tv, project_date_tv;
+    TextView project_name_tv,project_des_tv,project_duration_tv,project_username_tv, project_date_tv,project_owner_email_tv;
     ImageView project_image;
     Button edit_btn;
 
@@ -35,8 +36,7 @@ public class ProjectDetailsFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_project_details, container, false);
         int projectId = ProjectDetailsFragmentArgs.fromBundle(getArguments()).getProjectId();
-
-        int logInUserId = getArguments().getInt("userId");
+        int logInUserId = ProjectDetailsFragmentArgs.fromBundle(getArguments()).getLogInUserId();
 
         project_name_tv=view.findViewById(R.id.projectNameDetails_Tv);
         project_des_tv=view.findViewById(R.id.projectDescriptionDetails_Tv);
@@ -45,7 +45,18 @@ public class ProjectDetailsFragment extends Fragment {
         project_date_tv=view.findViewById(R.id.projectDateDetailsValue_Tv);
         project_image=view.findViewById(R.id.projectImgDetails_ImgV);
         edit_btn=view.findViewById(R.id.Edit_PostDetails_Btn);
+        project_owner_email_tv=view.findViewById(R.id.projectUseEmailDetailsValue_Tv);
         edit_btn.setVisibility(View.GONE);
+
+        edit_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+//                Navigation.findNavController(view).navigate(HomeFragmentDirections.actionNavigationHomeToProjectDetailsFragment(projectId));
+                Navigation.findNavController(view).navigate(ProjectDetailsFragmentDirections.actionProjectDetailsFragmentToEditProjectFragment(projectId));
+            }
+        });
+
+
 
         Model.instance.getProjectById(projectId,new Model.GetProjectById() {
                     @Override
@@ -68,6 +79,7 @@ public class ProjectDetailsFragment extends Fragment {
                         Model.instance.getUserById(userId, user -> {
                             owner = user;
                             project_username_tv.setText(user.getName());
+                            project_owner_email_tv.setText(user.getEmail());
                         });
 
                     }

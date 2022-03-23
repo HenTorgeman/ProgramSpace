@@ -1,11 +1,15 @@
 package com.example.programspace.model;
 
 import android.media.Image;
+import android.os.Build;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.RequiresApi;
 import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
+import java.time.LocalDate;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
@@ -25,15 +29,15 @@ public class User {
 
     public  User(){}
 
-    public User(String name, String email, String password, String description) {
-        this.id = IdGenerator.instance.getUserNextId();
+    public User(int userId,String name, String email, String password, String description) {
+//        this.id = IdGenerator.instance.getUserNextId();
+
+        this.id=userId;
         this.name = name;
         this.email = email;
         this.password = password;
         this.description = description;
-        //this.mySkills = mySkills;
-        //myProjects= new LinkedList<Project>();
-        //otherProjects= new LinkedList<Project>();
+
     }
 
     public int getId() {
@@ -84,6 +88,7 @@ public class User {
 
         return json;
     }
+
     public static User create(Map<String, Object> json) {
        int id = Integer.parseInt((String)json.get("id"));
        String name = (String) json.get("name");
@@ -91,7 +96,7 @@ public class User {
        String email = (String) json.get("email");
        String description = (String) json.get("description");
 
-       User user = new User(name,email,password,description);
+       User user = new User(id,name,email,password,description);
        user.setId(id);
 
        return user;
