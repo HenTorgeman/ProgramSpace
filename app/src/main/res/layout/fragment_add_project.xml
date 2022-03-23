@@ -15,10 +15,10 @@
             android:id="@+id/Edit_PostDetails_Btn"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
+            android:layout_marginTop="24dp"
             android:text="Post Project"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.444"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/add_project_im" />
 
@@ -110,11 +110,11 @@
             android:id="@+id/add_project_im"
             android:layout_width="162dp"
             android:layout_height="133dp"
-            android:layout_marginTop="28dp"
+            android:layout_marginTop="20dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.498"
+            app:layout_constraintHorizontal_bias="0.469"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/projectDuration_TV"
+            app:layout_constraintTop_toBottomOf="@+id/projectDuration_Tv"
             tools:src="@tools:sample/avatars" />
 
         <ImageButton

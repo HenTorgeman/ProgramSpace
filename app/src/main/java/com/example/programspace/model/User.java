@@ -67,6 +67,13 @@ public class User {
     public void setPassword(String password) {
         this.password = password;
     }
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
 
 
 

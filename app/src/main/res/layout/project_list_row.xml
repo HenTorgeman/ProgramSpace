@@ -21,16 +21,14 @@
         android:id="@+id/list_row_monthes"
         android:layout_width="120dp"
         android:layout_height="20dp"
-        android:layout_marginBottom="20dp"
+        android:layout_marginTop="32dp"
         android:text="Monthes of work:"
         android:textAlignment="textStart"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@+id/list_row_collab_button"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.171"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/list_row_description"
-        app:layout_constraintVertical_bias="0.26" />
+        app:layout_constraintTop_toBottomOf="@+id/list_row_description" />
 
     <ImageView
         android:id="@+id/list_row_avatar_imv"
@@ -102,17 +100,15 @@
         android:id="@+id/list_row_volcb"
         android:layout_width="95dp"
         android:layout_height="25dp"
-        android:layout_marginBottom="56dp"
+        android:layout_marginTop="16dp"
         android:clickable="false"
         android:focusable="false"
         android:text="Volunteer"
         android:textSize="12sp"
-        app:layout_constraintBottom_toTopOf="@+id/list_row_description"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/list_row_project_name"
-        app:layout_constraintTop_toBottomOf="@+id/list_row_date_tv"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@+id/list_row_date_tv" />
 
     <TextView
         android:id="@+id/list_row_monthesnum"

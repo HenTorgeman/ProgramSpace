@@ -48,19 +48,19 @@ public class ContentMainActivity extends AppCompatActivity {
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_content_main);
         navController.setGraph(R.navigation.mobile_navigation, b);
-/*
-        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+
+        /*navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
             @Override
             public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
                 switch (destination.getId()) {
-                    case R.id.navigation_home:
+                    case R.id.navigation_profile:
                         NavArgument argumentHome = new NavArgument.Builder().setDefaultValue(finalValue).build();
                         destination.addArgument("userId", argumentHome);
                 }
             }
-        });
+        });*/
 
- */
+
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);
         NavigationUI.setupWithNavController(binding.navView, navController);
 

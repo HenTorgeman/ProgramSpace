@@ -11,6 +11,7 @@ import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
+import com.google.firebase.Timestamp;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.FirebaseFirestore;
@@ -30,8 +31,13 @@ public class ModelFireBase {
     FirebaseFirestore db =  FirebaseFirestore.getInstance();
 
 
-    public void getAllProjects(Model.GetAllProjectsListener listener) {
+    public interface GetAllProjectsListener{
+        void OnComplete(List<Project> list);
+    }
+
+    public void getAllProjects(Long lastUpdateDate, GetAllProjectsListener listener) {
         db.collection("projects")
+                .whereGreaterThanOrEqualTo("lud",new Timestamp(lastUpdateDate,0))
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<QuerySnapshot>() {
                     @Override
@@ -114,25 +120,25 @@ public class ModelFireBase {
 
     }
 
-    public void getUserByEmail(String userEmail, Model.GetUserByEmail listener) {
-        db.collection("users")
-                .document(userEmail)
+    public void getProjectById(int projectId, Model.GetProjectById listener) {
+        db.collection("projects")
+                .document(String.valueOf(projectId))
                 .get()
                 .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
                     @Override
                     public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        User user = null;
+                        Project prj = null;
                         if (task.isSuccessful() & task.getResult()!= null){
-                            user = user.create(task.getResult().getData());
+                            prj= prj.create(task.getResult().getData());
                         }
-                        listener.onComplete(user);
+                        listener.onComplete(prj);
                     }
                 });
 
+
+
     }
 
-    public void getAllTechSkills(Model.GetAllTechskillsListener listener) {
-    }
 
     /**
      * Firebase Storage
@@ -162,22 +168,5 @@ public class ModelFireBase {
     }
 
 
-    public void getProjectById(int projectId, Model.GetProjectById listener) {
-        db.collection("projects")
-                .document(String.valueOf(projectId))
-                .get()
-                .addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-                    @Override
-                    public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                        Project prj = null;
-                        if (task.isSuccessful() & task.getResult()!= null){
-                            prj= prj.create(task.getResult().getData());
-                        }
-                        listener.onComplete(prj);
-                    }
-                });
 
-
-
-    }
 }

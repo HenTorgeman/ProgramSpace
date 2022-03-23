@@ -24,12 +24,14 @@ import com.example.programspace.R;
 import com.example.programspace.model.Model;
 import com.example.programspace.model.Project;
 
+import java.io.IOException;
 import java.util.Date;
 
 
 public class AddProjectFragment extends Fragment {
 
     static final int REQUEST_IMAGE_CAPTURE = 1;
+    static final int SELECT_IMAGE = 2;
     EditText nameEt;
     EditText descriptionEt;
     EditText durationEt;
@@ -76,6 +78,10 @@ public class AddProjectFragment extends Fragment {
     }
 
     private void openGallery() {
+        Intent intent = new Intent();
+        intent.setType("image/*");
+        intent.setAction(Intent.ACTION_GET_CONTENT);
+        startActivityForResult(Intent.createChooser(intent, "Select Picture"),SELECT_IMAGE);
     }
 
     private void openCamera() {
@@ -91,6 +97,17 @@ public class AddProjectFragment extends Fragment {
                 Bundle extras = data.getExtras();
                 imageBitmap = (Bitmap) extras.get("data");
                 avatarImv.setImageBitmap(imageBitmap);
+            }
+        }else if(requestCode == SELECT_IMAGE){
+            if(resultCode == RESULT_OK) {
+                if (data != null) {
+                    try {
+                        imageBitmap = MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(), data.getData());
+                        avatarImv.setImageBitmap(imageBitmap);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
             }
         }
     }
