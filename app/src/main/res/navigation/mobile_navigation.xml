@@ -36,7 +36,11 @@
         android:id="@+id/addProjectFragment"
         android:name="com.example.programspace.ui.home.AddProjectFragment"
         android:label="Post Project"
-        tools:layout="@layout/fragment_add_project" />
+        tools:layout="@layout/fragment_add_project" >
+        <argument
+            android:name="userId"
+            app:argType="integer" />
+    </fragment>
     <action
         android:id="@+id/action_global_addProjectFragment"
         app:destination="@id/addProjectFragment" />
@@ -45,6 +49,21 @@
         android:name="com.example.programspace.ui.home.ProjectDetailsFragment"
         android:label="Project Details"
         tools:layout="@layout/fragment_project_details">
+        <argument
+            android:name="projectId"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_projectDetailsFragment_to_editProjectFragment"
+            app:destination="@id/editProjectFragment" />
+        <argument
+            android:name="LogInUserId"
+            app:argType="integer" />
+    </fragment>
+    <fragment
+        android:id="@+id/editProjectFragment"
+        android:name="com.example.programspace.ui.home.EditProjectFragment"
+        android:label="fragment_edit_project"
+        tools:layout="@layout/fragment_edit_project">
         <argument
             android:name="projectId"
             app:argType="integer" />

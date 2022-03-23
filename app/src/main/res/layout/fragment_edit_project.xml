@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ui.home.EditProjectFragment">
+
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <ImageButton
+            android:id="@+id/add_project_cam_btn2"
+            android:layout_width="42dp"
+            android:layout_height="37dp"
+            android:layout_marginEnd="128dp"
+            android:src="@android:drawable/ic_menu_camera"
+            app:layout_constraintEnd_toEndOf="parent"
+            tools:layout_editor_absoluteY="253dp" />
+
+        <Button
+            android:id="@+id/Save_PostEdit_Btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Save"
+            android:textColor="#000000"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/volunteerEdit_cb" />
+
+        <CheckBox
+            android:id="@+id/volunteerEdit_cb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="28dp"
+            android:text="Volunteer"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.091"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/projectDurationDetails_Tv" />
+
+        <TextView
+            android:id="@+id/projectDurationDetails_Tv"
+            android:layout_width="183dp"
+            android:layout_height="26dp"
+            android:layout_marginStart="28dp"
+            android:layout_marginTop="36dp"
+            android:text="Duration in months:"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/projectImgDetails_ImgV" />
+
+        <TextView
+            android:id="@+id/projectDurationDetailsValue_Tv"
+            android:layout_width="101dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="36dp"
+            android:text="TextView"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.281"
+            app:layout_constraintStart_toEndOf="@+id/projectDurationDetails_Tv"
+            app:layout_constraintTop_toBottomOf="@+id/projectImgDetails_ImgV" />
+
+        <ImageView
+            android:id="@+id/projectImgDetails_ImgV"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="48dp"
+            android:layout_marginTop="40dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/projecrDesEdit_Et"
+            tools:src="@tools:sample/avatars" />
+
+        <ImageButton
+            android:id="@+id/add_project_gallery_btn2"
+            android:layout_width="44dp"
+            android:layout_height="36dp"
+            android:src="@android:drawable/ic_menu_gallery"
+            app:layout_constraintEnd_toStartOf="@+id/add_project_cam_btn2"
+            app:layout_constraintStart_toEndOf="@+id/projectImgDetails_ImgV"
+            tools:layout_editor_absoluteY="254dp" />
+
+        <EditText
+            android:id="@+id/projecrNameEdit_Et"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="48dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Project Name"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.104"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <EditText
+            android:id="@+id/projecrDesEdit_Et"
+            android:layout_width="195dp"
+            android:layout_height="35dp"
+            android:layout_marginTop="24dp"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="Description"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.134"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/projecrNameEdit_Et" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+</FrameLayout>

@@ -29,6 +29,8 @@ import com.google.firebase.auth.FirebaseUser;
 
 import java.io.IOException;
 
+import java.util.List;
+
 
 public class RegisterActivity extends AppCompatActivity implements View.OnClickListener {
 
@@ -62,7 +64,6 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
         pb=(ProgressBar) findViewById(R.id.progressBar_register);
         avatarImv = findViewById(R.id.register_imagev);
-
         camBtn = findViewById(R.id.register_cam_bt);
         galleryBtn = findViewById(R.id.register_gallery_bt);
 
@@ -116,9 +117,8 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         switch (view.getId()){
             case R.id.btn_register_new:
                 RegisterUser();
-                Intent intent=new Intent(this, ContentMainActivity.class);
-                startActivity(intent);
                 break;
+
         }
     }
 
@@ -159,47 +159,42 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
         }
 //change authentication
         pb.setVisibility(View.VISIBLE);
-        mAuth.createUserWithEmailAndPassword(email,password)
-                .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                    @Override
-                    public void onComplete(@NonNull Task<AuthResult> task) {
-                        if(task.isSuccessful()){
-                            User user=new User(name,email,password,des);
-                            if(imageBitmap != null){
-                                Model.instance.saveUserImage(imageBitmap, String.valueOf(user.getId()) + ".jpg", url -> {
-                                    user.setImageUrl(url);
-                                    Model.instance.addUser(user,()->{
-                                        pb.setVisibility(View.GONE);
-                                    });
-                                });
-                            }else {
-                                Model.instance.addUser(user,()->{
-                                    pb.setVisibility(View.GONE);
-                                });
-                            }
-                            Model.instance.addUser(user,()->{
-                                pb.setVisibility(View.GONE);
-                            });
+
+        Model.instance.getAllUsers(new Model.GetAllUsersListener() {
+            @Override
+            public void OnComplete(List<User> list) {
+
+                int id=list.size()+1;
+                User user=new User(id,name,email,password,des);
+
+                if(imageBitmap != null){
+                    Model.instance.saveUserImage(imageBitmap, String.valueOf(user.getId()) + ".jpg", url -> {
+                        user.setImageUrl(url);
+                        Model.instance.addUser(user,()->{
+                            pb.setVisibility(View.GONE);
+                            openFeed(id);
+                        });
+                    });
+                }else {
+                    Model.instance.addUser(user,()->{
+                        pb.setVisibility(View.GONE);
+                        openFeed(id);
+
+                    });
+                }
 
 
-                            /*FirebaseDatabase.getInstance().getReference("Users")
-                                    .child(FirebaseAuth.getInstance().getCurrentUser().getUid())
-                                    .setValue(user).addOnCompleteListener(new OnCompleteListener<Void>() {
-                                @Override
-                                public void onComplete(@NonNull Task<Void> task) {
-                                    if(task.isSuccessful()){
-                                        Toast.makeText(RegisterActivity.this,"User has been register Successfuly",Toast.LENGTH_LONG).show();
-                                        pb.setVisibility(View.GONE);
-                                    }
-                                    else{
-                                        Toast.makeText(RegisterActivity.this,"Failed to register! Please try again",Toast.LENGTH_LONG).show();
-                                        pb.setVisibility(View.GONE);
-                                    }
-                                }
-                            });*/
+
+
                         }
-                    }
-                });
+                    });
 
     }
+
+    private void openFeed(int id) {
+        Intent intent=new Intent(this, ContentMainActivity.class);
+        startActivity(intent);
+
+    }
+
 }

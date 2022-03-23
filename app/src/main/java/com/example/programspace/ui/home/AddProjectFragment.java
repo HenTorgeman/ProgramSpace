@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.graphics.Bitmap;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.navigation.Navigation;
@@ -21,8 +22,11 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import com.example.programspace.R;
+import com.example.programspace.databinding.FragmentAddProjectBinding;
+import com.example.programspace.databinding.FragmentHomeBinding;
 import com.example.programspace.model.Model;
 import com.example.programspace.model.Project;
+import com.example.programspace.model.User;
 
 import java.io.IOException;
 import java.util.Date;
@@ -42,11 +46,18 @@ public class AddProjectFragment extends Fragment {
     ImageButton camBtn;
     ImageButton galleryBtn;
 
+    int userId;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
+
         View view =inflater.inflate(R.layout.fragment_add_project, container, false);
+//        User user = Model.instance.getUserById(getArguments().getInt("userId"));
+
+        userId=getArguments().getInt("userId");
+
         nameEt = view.findViewById(R.id.inp_ProjectName);
         descriptionEt = view.findViewById(R.id.inp_ProjectDescription);
         durationEt = view.findViewById(R.id.inp_ProjectDuration);
@@ -56,6 +67,7 @@ public class AddProjectFragment extends Fragment {
 
         camBtn = view.findViewById(R.id.add_project_cam_btn);
         galleryBtn = view.findViewById(R.id.add_project_gallery_btn);
+
 
         camBtn.setOnClickListener(v -> {
             openCamera();
@@ -115,14 +127,13 @@ public class AddProjectFragment extends Fragment {
     private void save() {
         saveBtn.setEnabled(false);
 
-
         String name = nameEt.getText().toString();
         String desc = descriptionEt.getText().toString();
         String durationString= durationEt.getText().toString();
         int duration= Integer.parseInt(durationString);
         boolean flagVol = cbVol.isChecked();
         Date date= new Date();
-        Project project = new Project(1,name,desc,duration,flagVol,date);
+        Project project = new Project(userId,name,desc,duration,flagVol,date);
         if(imageBitmap != null){
         Model.instance.saveProjectImage(imageBitmap, String.valueOf(project.getId()) + ".jpg", url -> {
             project.setImageUrl(url);

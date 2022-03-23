@@ -13,7 +13,6 @@ public class TechSkill {
     String skill_name;
 
     public TechSkill(String skill_name) {
-        this.id = IdGenerator.instance.getTechSkillNextId();
         this.skill_name = skill_name;
     }
 }

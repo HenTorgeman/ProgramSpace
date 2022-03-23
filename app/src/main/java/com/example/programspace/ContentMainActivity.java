@@ -44,21 +44,21 @@ public class ContentMainActivity extends AppCompatActivity {
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
         AppBarConfiguration appBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.navigation_home, R.id.navigation_profile, R.id.navigation_notifications)
+                R.id.navigation_home, R.id.navigation_profile, R.id.navigation_notifications,R.id.addProjectFragment)
                 .build();
         navController = Navigation.findNavController(this, R.id.nav_host_fragment_activity_content_main);
         navController.setGraph(R.navigation.mobile_navigation, b);
 
-        /*navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
-            @Override
-            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
-                switch (destination.getId()) {
-                    case R.id.navigation_profile:
-                        NavArgument argumentHome = new NavArgument.Builder().setDefaultValue(finalValue).build();
-                        destination.addArgument("userId", argumentHome);
-                }
-            }
-        });*/
+//        navController.addOnDestinationChangedListener(new NavController.OnDestinationChangedListener() {
+//            @Override
+//            public void onDestinationChanged(@NonNull NavController controller, @NonNull NavDestination destination, @Nullable Bundle arguments) {
+//                switch (destination.getId()) {
+//                    case R.id.addProjectFragment:
+//                        NavArgument argumentHome = new NavArgument.Builder().setDefaultValue(finalValue).build();
+//                        destination.addArgument("userId", argumentHome);
+//                }
+//            }
+//        });
 
 
         NavigationUI.setupActionBarWithNavController(this, navController, appBarConfiguration);

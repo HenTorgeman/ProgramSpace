@@ -11,9 +11,13 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.example.programspace.model.Model;
+import com.example.programspace.model.Project;
 import com.example.programspace.model.User;
+import com.squareup.picasso.Picasso;
 
 import org.w3c.dom.Text;
+
+import java.util.List;
 
 public class LogInActivity extends AppCompatActivity {
 
@@ -64,6 +68,44 @@ public class LogInActivity extends AppCompatActivity {
                     return;
                 }
 
+
+                Model.instance.getAllUsers(new Model.GetAllUsersListener() {
+                    @Override
+                    public void OnComplete(List<User> list) {
+
+                        boolean found_email=false;
+                        boolean found_password=false;
+                        for(int i=0;i<list.size();i++){
+
+                            User us=list.get(i);
+                            if(us.getEmail().compareTo(email)==0){
+                                found_email=true;
+                                if(us.getPassword().compareTo(password)==0){
+                                    found_password=true;
+                                    open_app(us.getId());
+
+                                }
+                            }
+                        }
+                        if(found_email==false){
+                            progressBar.setVisibility(View.GONE);
+                            inp_Email.setError("email dont exsist!");
+                            inp_Email.requestFocus();
+                            login_btn.setEnabled(true);
+                            return;
+                        }
+                        else{
+                            if(found_password==false){
+                                progressBar.setVisibility(View.GONE);
+                                inp_Password.setError("Incorrect Passwoord!");
+                                inp_Password.requestFocus();
+                                login_btn.setEnabled(true);
+                            }
+                        }
+                    }
+                });
+
+
                 //not working
                 /*Model.instance.getUserByEmail(email, user -> {
                     if(user== null){
@@ -78,7 +120,6 @@ public class LogInActivity extends AppCompatActivity {
                     }
                 });*/
 
-                open_app(1);
 
 
             }
