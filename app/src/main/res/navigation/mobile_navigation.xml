@@ -22,7 +22,10 @@
         android:id="@+id/navigation_profile"
         android:name="com.example.programspace.ui.profile.ProfileFragment"
         android:label="@string/title_profile"
-        tools:layout="@layout/fragment_profile" />
+        tools:layout="@layout/fragment_profile" >
+        <argument android:name="userid"
+            app:argType="integer" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_notifications"
@@ -44,8 +47,8 @@
     <fragment
         android:id="@+id/projectDetailsFragment"
         android:name="com.example.programspace.ui.home.ProjectDetailsFragment"
-        android:label="fragment_project_details"
-        tools:layout="@layout/fragment_project_details" >
+        android:label="Project Details"
+        tools:layout="@layout/fragment_project_details">
         <argument
             android:name="projectId"
             app:argType="integer" />

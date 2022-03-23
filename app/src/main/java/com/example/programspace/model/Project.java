@@ -8,6 +8,8 @@ import androidx.room.Entity;
 import androidx.room.PrimaryKey;
 
 import com.google.firebase.Timestamp;
+import com.google.firebase.firestore.FieldValue;
+
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -32,6 +34,9 @@ public class Project {
     Date creationDate;
     Date closeDate;
     private String imageUrl;
+    Long lud = new Long(0);
+
+
 
 
     //projectStatus status;
@@ -62,12 +67,9 @@ public class Project {
         this.volunteer = volunteer;
         this.isDeleted = false;
         this.creationDate = new Date();
-        this.closeDate =null;
-        //this.status = status;
-        //this.post_status = post_status;
-        //this.requirements_skills = requirements_skills;
+
     }
-    public Project(int project_admin_id,int collaborator_id, String project_name, String project_des,int duration, boolean volunteer, boolean isDeleted, Date creationDate, Date closeDate) {
+    public Project(int project_admin_id,int collaborator_id, String project_name, String project_des,int duration, boolean volunteer, boolean isDeleted, Date creationDate, Long lud) {
         this.project_admin_id = project_admin_id;
         this.collaborator_id = collaborator_id;
         this.project_name = project_name;
@@ -76,7 +78,6 @@ public class Project {
         this.volunteer = volunteer;
         this.isDeleted = isDeleted;
         this.creationDate = creationDate;
-        this.closeDate = closeDate;
     }
 
 
@@ -150,25 +151,7 @@ public class Project {
         this.closeDate = closeDate;
     }
 
-    /*public projectStatus getStatus() {
-        return status;
-    }
 
-    public void setStatus(projectStatus status) {
-        this.status = status;
-    }
-
-    public postStatus getPost_status() {
-        return post_status;
-    }
-
-    public void setPost_status(postStatus post_status) {
-        this.post_status = post_status;
-    }*/
-
-    //public List<TechSkill> getRequirements_skills() {return requirements_skills;}
-
-    //public void setRequirements_skills(List<TechSkill> requirements_skills) { this.requirements_skills = requirements_skills; }
 
     public Map<String, Object> toJson() {
         Map<String, Object> json = new HashMap<>();
@@ -181,7 +164,7 @@ public class Project {
         json.put("volunteer",volunteer);
         json.put("isDeleted",isDeleted);
         json.put("creationDate",creationDate);
-        json.put("closeDate",closeDate);
+        json.put("lud", FieldValue.serverTimestamp());
         json.put("imageUrl",imageUrl);
 
 
@@ -199,11 +182,11 @@ public class Project {
         boolean isDeleted =(boolean)data.get("isDeleted");
         Timestamp timeCreation = (Timestamp)data.get("creationDate");
         Date creationDate = timeCreation.toDate();
-        Timestamp timeClose = (Timestamp)data.get("creationDate");
-        Date closeDate = timeClose.toDate();
+        Timestamp ts = (Timestamp)data.get("lud");
+        Long lud = ts.getSeconds();
         String imageUrl = (String)data.get("imageUrl");
 
-        Project project =new Project(project_admin_id,collaborator_id,project_name,project_des,duration,volunteer,isDeleted,creationDate,closeDate);
+        Project project =new Project(project_admin_id,collaborator_id,project_name,project_des,duration,volunteer,isDeleted,creationDate,lud);
         project.setId(id);
         project.setImageUrl(imageUrl);
 
@@ -218,5 +201,9 @@ public class Project {
 
     public String getImageUrl(){
         return this.imageUrl;
+    }
+
+    public Long getUpdateDate() {
+        return lud;
     }
 }

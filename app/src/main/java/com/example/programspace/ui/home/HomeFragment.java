@@ -1,5 +1,6 @@
 package com.example.programspace.ui.home;
 
+import android.content.Context;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -16,9 +17,12 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProvider;
 import androidx.navigation.Navigation;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+import androidx.swiperefreshlayout.widget.SwipeRefreshLayout;
 
 import com.example.programspace.R;
 import com.example.programspace.databinding.FragmentHomeBinding;
@@ -33,10 +37,17 @@ import java.util.List;
 
 public class HomeFragment extends Fragment {
 
-    List<Project> data;
+    HomeViewModel viewModel;
     int userId;
     FragmentHomeBinding binding;
     MyAdapter adapter;
+    SwipeRefreshLayout swipeRefreshLayout;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        viewModel = new ViewModelProvider(this).get(HomeViewModel.class);
+    }
 
     @Nullable
     @Override
@@ -46,6 +57,8 @@ public class HomeFragment extends Fragment {
 
         int temp = getArguments().getInt("userId");
         userId = temp;
+        swipeRefreshLayout = root.findViewById(R.id.projectlist_swiperefresh);
+        swipeRefreshLayout.setOnRefreshListener(() -> Model.instance.refreshProjectList());
 
 
 
@@ -57,35 +70,34 @@ public class HomeFragment extends Fragment {
         adapter= new MyAdapter();
         list.setAdapter(adapter);
 
-        //add project button
-        /*View viewById = view.findViewById(R.id.studentlist_add_btn);
-        viewById.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
 
-                Navigation.findNavController(v).navigate(R.id.action_nav_home_to_add_student);
-            }
-        });*/
 
         //on project click in list
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int position) {
-                int id = data.get(position).getId();
-                Navigation.findNavController(root).navigate(HomeFragmentDirections.actionNavigationHomeToProjectDetailsFragment(id,userId));
+                int id = viewModel.getData().getValue().get(position).getId();
+                Navigation.findNavController(root).navigate(HomeFragmentDirections.actionNavigationHomeToProjectDetailsFragment(id));
 
             }
         });
 
-        Refresh();
+        viewModel.getData().observe(getViewLifecycleOwner(), projects -> Refresh());
+        swipeRefreshLayout.setRefreshing(Model.instance.getProjectListLoadingState().getValue() == Model.ProjectListLoadingState.loading);
+        Model.instance.getProjectListLoadingState().observe(getViewLifecycleOwner(), projectListLoadingState -> {
+            if(projectListLoadingState == Model.ProjectListLoadingState.loading){
+                swipeRefreshLayout.setRefreshing(true);
+            }else{
+                swipeRefreshLayout.setRefreshing(false);
+            }
+        });
         return root;
     }
 
     private void Refresh() {
-        Model.instance.getAllProjects((list)->{
-            data = list;
-            adapter.notifyDataSetChanged();
-        });
+        adapter.notifyDataSetChanged();
+        swipeRefreshLayout.setRefreshing(false);
+        //swipe
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
@@ -141,7 +153,7 @@ public class HomeFragment extends Fragment {
         //TODO::add the poster information in oncomplete get user put function bind
         @Override
         public void onBindViewHolder(@NonNull com.example.programspace.ui.home.HomeFragment.MyViewHolder holder, int position) {
-            Project project = data.get(position);
+            Project project = viewModel.getData().getValue().get(position);
             Date date = project.getCreationDate();
             SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
             String datest = formatter.format(date);
@@ -158,9 +170,9 @@ public class HomeFragment extends Fragment {
 
         @Override
         public int getItemCount() {
-            if(data==null)
+            if(viewModel.getData().getValue()==null)
                 return 0;
-            return data.size();
+            return viewModel.getData().getValue().size();
         }
     }
 
