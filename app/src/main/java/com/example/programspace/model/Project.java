@@ -70,6 +70,7 @@ public class Project {
 
     }
     public Project(int project_admin_id,int collaborator_id, String project_name, String project_des,int duration, boolean volunteer, boolean isDeleted, Date creationDate, Long lud) {
+        this.id=IdGenerator.instance.getProjectNextId();
         this.project_admin_id = project_admin_id;
         this.collaborator_id = collaborator_id;
         this.project_name = project_name;

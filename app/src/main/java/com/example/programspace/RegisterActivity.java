@@ -64,10 +64,9 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
 
 
         pb=(ProgressBar) findViewById(R.id.progressBar_register);
-//        avatarImv = findViewById(R.id.register_imagev);
-//
-//        camBtn = findViewById(R.id.register_cam_bt);
-//        galleryBtn = findViewById(R.id.register_gallery_bt);
+        avatarImv = findViewById(R.id.register_imagev);
+        camBtn = findViewById(R.id.register_cam_bt);
+        galleryBtn = findViewById(R.id.register_gallery_bt);
 
         camBtn.setOnClickListener(v -> {
             openCamera();
