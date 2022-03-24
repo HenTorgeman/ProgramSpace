@@ -7,26 +7,28 @@
         <entry key="..\:/Users/hen-t/Android_Projects/ProgramSpace/app/src/main/res/layout/activity_main.xml" value="0.264" />
         <entry key="..\:/Users/hen-t/Android_Projects/ProgramSpace/app/src/main/res/layout/activity_register.xml" value="0.2864583333333333" />
         <entry key="..\:/Users/hen-t/Android_Projects/ProgramSpace/app/src/main/res/layout/activity_user_profile.xml" value="0.176" />
-        <entry key="..\:/Users/hen-t/gitLocal/ProgramSpace/app/src/main/res/layout/activity_content_main.xml" value="0.264" />
-        <entry key="..\:/Users/hen-t/gitLocal/ProgramSpace/app/src/main/res/layout/activity_main.xml" value="0.2453125" />
-        <entry key="..\:/Users/hen-t/gitLocal/ProgramSpace/app/src/main/res/layout/activity_register.xml" value="0.23541666666666666" />
-        <entry key="..\:/Users/hen-t/gitLocal/ProgramSpace/app/src/main/res/layout/fragment_add_project.xml" value="0.4" />
-        <entry key="..\:/Users/hen-t/gitLocal/ProgramSpace/app/src/main/res/layout/fragment_edit_project.xml" value="0.4" />
-        <entry key="..\:/Users/hen-t/gitLocal/ProgramSpace/app/src/main/res/layout/fragment_home.xml" value="0.2453125" />
-        <entry key="..\:/Users/hen-t/gitLocal/ProgramSpace/app/src/main/res/layout/fragment_project_details.xml" value="0.136" />
-        <entry key="..\:/Users/hen-t/gitLocal/ProgramSpace/app/src/main/res/menu/bottom_nav_menu.xml" value="0.2453125" />
         <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/drawable/ic_dashboard_black_24dp.xml" value="0.2703125" />
         <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/drawable/ic_home_black_24dp.xml" value="0.2703125" />
         <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/drawable/ic_notifications_black_24dp.xml" value="0.2703125" />
+        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/drawable/profile_background.xml" value="0.2595" />
         <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/activity_content_main.xml" value="0.264" />
         <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/activity_main.xml" value="0.13020833333333334" />
         <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/activity_register.xml" value="0.264" />
         <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/activity_user_profile.xml" value="0.13020833333333334" />
+        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/add_project_fragment.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/content_add_project_fragment.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_add_project.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_dashboard.xml" value="0.1640625" />
-        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_home.xml" value="0.1640625" />
+        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_edit_project.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_first.xml" value="0.16770833333333332" />
+        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_home.xml" value="0.152" />
         <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_notifications.xml" value="0.1640625" />
+        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_profile.xml" value="0.264" />
+        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_project_details.xml" value="0.3129251700680272" />
+        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/fragment_second.xml" value="0.16770833333333332" />
         <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/layout/project_list_row.xml" value="0.4" />
         <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/menu/bottom_nav_menu.xml" value="0.25416666666666665" />
+        <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/menu/home_menu.xml" value="0.25416666666666665" />
         <entry key="..\:/Users/luay/AndroidStudioProjects/ProgramSpace/app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.2703125" />
       </map>
     </option>

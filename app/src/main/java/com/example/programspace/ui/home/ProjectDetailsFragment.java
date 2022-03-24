@@ -20,6 +20,9 @@ import com.example.programspace.model.Project;
 import com.example.programspace.model.User;
 import com.squareup.picasso.Picasso;
 
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
 public class ProjectDetailsFragment extends Fragment {
     Project project;
     User owner;
@@ -51,8 +54,7 @@ public class ProjectDetailsFragment extends Fragment {
         edit_btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                Navigation.findNavController(view).navigate(HomeFragmentDirections.actionNavigationHomeToProjectDetailsFragment(projectId));
-                Navigation.findNavController(view).navigate(ProjectDetailsFragmentDirections.actionProjectDetailsFragmentToEditProjectFragment(projectId));
+                //Navigation.findNavController(view).navigate(ProjectDetailsFragmentDirections.actionProjectDetailsFragmentToEditProjectFragment(projectId));
             }
         });
 
@@ -64,7 +66,10 @@ public class ProjectDetailsFragment extends Fragment {
 
                         project_name_tv.setText(project.getProject_name());
                         project_des_tv.setText(project.getProject_des());
-                        project_date_tv.setText(project.getCreationDate().toString());
+                        Date date = project.getCreationDate();
+                        SimpleDateFormat formatter = new SimpleDateFormat("dd.MM.yyyy");
+                        String datest = formatter.format(date);
+                        project_date_tv.setText(datest);
                         project_duration_tv.setText(String.valueOf(project.getDuration()));
 
                         int userId=project.getProject_admin();

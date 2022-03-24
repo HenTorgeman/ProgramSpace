@@ -157,7 +157,7 @@ public class RegisterActivity extends AppCompatActivity implements View.OnClickL
             inp_email.requestFocus();
             return;
         }
-//change authentication
+
         pb.setVisibility(View.VISIBLE);
 
         Model.instance.getAllUsers(new Model.GetAllUsersListener() {

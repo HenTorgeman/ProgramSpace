@@ -26,14 +26,11 @@ public class User {
 
 
     private String imageUrl;
-    //List<Project> myProjects; //Project I am Admin
-    //List<Project> otherProjects; //Project I an joined
-    //List<TechSkill> mySkills;
+
 
     public  User(){}
 
     public User(int userId,String name, String email, String password, String description) {
-//        this.id = IdGenerator.instance.getUserNextId();
 
         this.id=userId;
         this.name = name;

@@ -160,22 +160,4 @@ public class Model {
     }
 
 
-    /*public void editProject(Project project, int index) {
-        data.set(index, project);
-    }
-
-    public Project getProjectById(String projectid) {
-        for (Project p:data
-        ) {
-            if (p.getId().equals(studentId)){
-                return p;
-            }
-        }
-        return null;
-    }
-
-    @RequiresApi(api = Build.VERSION_CODES.N)
-    public void removeStudent(String id) {
-        data.removeIf(s -> s.getId().equals(id));
-    }*/
 }

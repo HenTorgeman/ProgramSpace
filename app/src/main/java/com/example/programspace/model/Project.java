@@ -39,21 +39,7 @@ public class Project {
 
 
 
-    //projectStatus status;
-    //postStatus post_status;
-    //List<TechSkill> requirements_skills;
 
-
-   /* enum projectStatus {
-        DRAFT,
-        OPEN,
-        CLOSE
-    }
-    enum postStatus {
-        SHARE,
-        HIDE,
-    }
-*/
     public Project(){};
 
     //added constructor

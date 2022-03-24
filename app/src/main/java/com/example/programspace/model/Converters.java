@@ -65,27 +65,6 @@ public class Converters {
         return projectList;
     }
 
-    @TypeConverter
-    public String fromTechSkillListToString(List<TechSkill> techSkillList) {
-        if (techSkillList == null) {
-            return (null);
-        }
-        Gson gson = new Gson();
-        Type type = new TypeToken<List<TechSkill>>() {}.getType();
-        String json = gson.toJson(techSkillList, type);
-        return json;
-    }
-
-    @TypeConverter
-    public List<TechSkill> fromStringToTechSkillList(String stringList){
-        if (stringList == null) {
-            return (null);
-        }
-        Gson gson = new Gson();
-        Type type = new TypeToken<List<TechSkill>>() {}.getType();
-        List<TechSkill> projectList = gson.fromJson(stringList, type);
-        return projectList;
-    }
 
 
 

@@ -130,6 +130,23 @@ public class AddProjectFragment extends Fragment {
         String name = nameEt.getText().toString();
         String desc = descriptionEt.getText().toString();
         String durationString= durationEt.getText().toString();
+        if(name.isEmpty()){
+            nameEt.setError("you must enter project name!");
+            nameEt.requestFocus();
+            return;
+        }
+
+        if(desc.isEmpty()){
+            descriptionEt.setError("you must enter description!");
+            descriptionEt.requestFocus();
+            return;
+        }
+
+        if(durationString.isEmpty()){
+            durationEt.setError("you must enter duration");
+            durationEt.requestFocus();
+            return;
+        }
         int duration= Integer.parseInt(durationString);
         boolean flagVol = cbVol.isChecked();
         Date date= new Date();

@@ -106,19 +106,6 @@ public class LogInActivity extends AppCompatActivity {
                 });
 
 
-                //not working
-                /*Model.instance.getUserByEmail(email, user -> {
-                    if(user== null){
-                        progressBar.setVisibility(View.GONE);
-                        inp_Email.setError("User not found please register!");
-                    }else {
-                        if (user.getPassword() == password) {
-                            open_app(user.getId());
-                        } else {
-                            inp_Password.setError("Incorrect password!");
-                        }
-                    }
-                });*/
 
 
 

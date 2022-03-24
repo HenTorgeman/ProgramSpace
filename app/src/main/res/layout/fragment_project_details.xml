@@ -12,8 +12,8 @@
 
         <TextView
             android:id="@+id/projectUseNameDetails_Tv"
-            android:layout_width="186dp"
-            android:layout_height="20dp"
+            android:layout_width="151dp"
+            android:layout_height="17dp"
             android:layout_marginStart="28dp"
             android:layout_marginTop="16dp"
             android:text="User Name"
@@ -37,8 +37,10 @@
             android:id="@+id/volunteer_cb"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="60dp"
+            android:layout_marginTop="36dp"
             android:text="Volunteer"
+            android:clickable="false"
+            android:focusable="false"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.088"
             app:layout_constraintStart_toStartOf="parent"
@@ -46,8 +48,8 @@
 
         <TextView
             android:id="@+id/projectDurationDetails_Tv"
-            android:layout_width="183dp"
-            android:layout_height="26dp"
+            android:layout_width="167dp"
+            android:layout_height="24dp"
             android:layout_marginStart="28dp"
             android:layout_marginTop="36dp"
             android:text="Duration in months:"
@@ -58,8 +60,8 @@
 
         <TextView
             android:id="@+id/projectDescriptionDetails_Tv"
-            android:layout_width="186dp"
-            android:layout_height="20dp"
+            android:layout_width="218dp"
+            android:layout_height="36dp"
             android:layout_marginTop="28dp"
             android:text="Project Description"
             android:textSize="16sp"
@@ -84,23 +86,23 @@
 
         <TextView
             android:id="@+id/projectUseNameDetailsValue_Tv"
-            android:layout_width="100dp"
-            android:layout_height="19dp"
-            android:layout_marginTop="24dp"
+            android:layout_width="136dp"
+            android:layout_height="21dp"
+            android:layout_marginTop="20dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.266"
+            app:layout_constraintHorizontal_bias="0.219"
             app:layout_constraintStart_toEndOf="@+id/projectUseNameDetails_Tv"
             app:layout_constraintTop_toBottomOf="@+id/projectDurationDetailsValue_Tv" />
 
         <TextView
             android:id="@+id/projectDurationDetailsValue_Tv"
-            android:layout_width="101dp"
-            android:layout_height="18dp"
+            android:layout_width="73dp"
+            android:layout_height="21dp"
             android:layout_marginTop="36dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="0.281"
+            app:layout_constraintHorizontal_bias="0.156"
             app:layout_constraintStart_toEndOf="@+id/projectDurationDetails_Tv"
             app:layout_constraintTop_toBottomOf="@+id/projectImgDetails_ImgV" />
 
@@ -128,20 +130,20 @@
 
         <TextView
             android:id="@+id/projectUseEmailDetailsValue_Tv"
-            android:layout_width="101dp"
-            android:layout_height="21dp"
-            android:layout_marginTop="28dp"
+            android:layout_width="177dp"
+            android:layout_height="26dp"
+            android:layout_marginTop="20dp"
             android:layout_marginEnd="72dp"
             android:text="TextView"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintHorizontal_bias="0.625"
             app:layout_constraintStart_toEndOf="@+id/projectUseEmailDetails_Tv"
             app:layout_constraintTop_toBottomOf="@+id/projectUseNameDetailsValue_Tv" />
 
         <TextView
             android:id="@+id/projectUseEmailDetails_Tv"
-            android:layout_width="186dp"
-            android:layout_height="20dp"
+            android:layout_width="130dp"
+            android:layout_height="22dp"
             android:layout_marginStart="28dp"
             android:layout_marginTop="24dp"
             android:text="User Email"

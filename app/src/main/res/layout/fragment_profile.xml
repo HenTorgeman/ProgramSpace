@@ -45,13 +45,4 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/UserName_Profile_tv" />
 
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/RV_list_Profile"
-        android:layout_width="match_parent"
-        android:layout_height="411dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/AboutUser_Profile_tv" />
-
 </androidx.constraintlayout.widget.ConstraintLayout>

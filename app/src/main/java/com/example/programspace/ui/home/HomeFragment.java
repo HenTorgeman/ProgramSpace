@@ -97,7 +97,6 @@ public class HomeFragment extends Fragment {
     private void Refresh() {
         adapter.notifyDataSetChanged();
         swipeRefreshLayout.setRefreshing(false);
-        //swipe
     }
 
     class MyViewHolder extends RecyclerView.ViewHolder{
@@ -162,10 +161,17 @@ public class HomeFragment extends Fragment {
             holder.pronameTV.setText(project.getProject_name());
             holder.descriptionTV.setText(project.getProject_des());
             holder.monthesTV.setText(Integer.toString(project.getDuration()));
-            holder.avatarImv.setImageResource(R.drawable.profile);
             if (project.getImageUrl() != null) {
                 Picasso.get().load(project.getImageUrl()).into(holder.projectImv);
             }
+            Model.instance.getUserById(userId, user -> {
+                holder.nameTv.setText(user.getName());
+                if (project.getImageUrl() != null) {
+                    Picasso.get().load(user.getImageUrl()).into(holder.avatarImv);
+                }else{
+                    holder.avatarImv.setImageResource(R.drawable.profile);
+                }
+            });
         }
 
         @Override

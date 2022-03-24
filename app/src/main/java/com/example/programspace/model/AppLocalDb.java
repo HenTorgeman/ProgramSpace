@@ -7,12 +7,11 @@ import androidx.room.TypeConverters;
 
 import com.example.programspace.MyApplication;
 
-@Database(entities = {User.class,Project.class,TechSkill.class}, version = 1)
+@Database(entities = {User.class,Project.class}, version = 4)
 @TypeConverters(Converters.class)
 abstract class AppLocalDbRepository extends RoomDatabase {
     public abstract UserDao userDao();
     public abstract ProjectDao projectDao();
-    public abstract TechSkillDao techSkillDao();
 }
 public class AppLocalDb{
     static public AppLocalDbRepository db =

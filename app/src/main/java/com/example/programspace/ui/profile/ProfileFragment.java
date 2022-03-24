@@ -17,6 +17,7 @@ import com.example.programspace.R;
 import com.example.programspace.databinding.FragmentProfileBinding;
 import com.example.programspace.model.Model;
 import com.example.programspace.model.User;
+import com.squareup.picasso.Picasso;
 
 
 public class ProfileFragment extends Fragment {
@@ -34,17 +35,20 @@ public class ProfileFragment extends Fragment {
         binding = FragmentProfileBinding.inflate(inflater, container, false);
         View root = binding.getRoot();
 
-        //int logInUserId = getArguments().getInt("userId");
+        int logInUserId = getArguments().getInt("userId");
+        //userId = logInUserId;
 
         name= root.findViewById(R.id.UserName_Profile_tv);
         description = root.findViewById(R.id.AboutUser_Profile_tv);
         profile_Image = root.findViewById(R.id.PhotoUser_Profile_iv);
 
-//        Model.instance.getUserById(logInUserId, user -> {
-//           name.setText(user.getName());
-//           description.setText(user.getDescription());
-//           //put image
-//        });
+        Model.instance.getUserById(logInUserId, user -> {
+           name.setText(user.getName());
+           description.setText(user.getDescription());
+            if (user.getImageUrl() != null) {
+                Picasso.get().load(user.getImageUrl()).into(profile_Image);
+            }
+        });
 
         return root;
     }
